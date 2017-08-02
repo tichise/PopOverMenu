@@ -7,7 +7,7 @@ PopOverMenu is a PopOver style menu.
 #### Swift
 
 ```html
-public func openMenu(sender:UIBarButtonItem) {
+    public func openMenu(sender:UIBarButtonItem) {
         let titles:NSArray = ["Menu1", "Menu2", "Menu3"]
         let descriptions:NSArray = ["description1", "", "description3"]
         
@@ -33,7 +33,7 @@ public func openMenu(sender:UIBarButtonItem) {
         present(popOverViewController, animated: true, completion: nil)
     }
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.none
     }
 ```
