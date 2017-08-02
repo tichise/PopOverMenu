@@ -7,13 +7,75 @@ PopOverMenu is a PopOver style menu.
 #### Swift
 
 ```html
-
+public func openMenu(sender:UIBarButtonItem) {
+        let titles:NSArray = ["Menu1", "Menu2", "Menu3"]
+        let descriptions:NSArray = ["description1", "", "description3"]
+        
+        let popOverViewController = PopOverViewController.instantiate()
+        popOverViewController.setTitles(titles: titles)
+        popOverViewController.setDescriptions(descriptions: descriptions)
+        popOverViewController.popoverPresentationController?.barButtonItem = sender
+        popOverViewController.preferredContentSize = CGSize(width: 300, height:135)
+        popOverViewController.presentationController?.delegate = self
+        popOverViewController.completionHandler = { selectRow in
+            switch (selectRow) {
+            case 0:
+                break
+            case 1:
+                break
+            case 2:
+                break
+            default:
+                break
+            }
+            
+        };
+        present(popOverViewController, animated: true, completion: nil)
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
 ```
 
 #### ObjectiveC
 
 ```
 @import PopOverMenu;
+
+-(IBAction)openMenu:(id)sender {
+    
+    NSArray *titles = @[@"Menu1", @"Menu2", @"Menu3"];
+    NSArray *descriptions = @[@"description1", @"", @"description3"];
+    
+    PopOverViewController *popOverViewController = [PopOverViewController instantiate];
+    
+    [popOverViewController setTitlesWithTitles:titles];
+    [popOverViewController setDescriptionsWithDescriptions:descriptions];
+    
+    popOverViewController.popoverPresentationController.barButtonItem = sender;
+    popOverViewController.preferredContentSize = CGSizeMake(300, 135);
+    popOverViewController.presentationController.delegate = self;
+    
+    [popOverViewController setCompletionHandler:^(NSInteger selectRow) {
+        switch (selectRow) {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            default:
+                break;
+        }
+    }];
+    
+    [self presentViewController:popOverViewController animated:YES completion:nil];
+}
+
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
+    return UIModalPresentationNone;
+}
 
 ```
 
