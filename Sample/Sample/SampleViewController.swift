@@ -32,7 +32,7 @@ class SampleViewController: UIViewController, UIAdaptivePresentationControllerDe
         popOverViewController.setTitles(titles: titles)
         popOverViewController.setDescriptions(descriptions: descriptions)
         popOverViewController.popoverPresentationController?.barButtonItem = sender
-        popOverViewController.preferredContentSize = CGSize(width: 300, height:135)
+        popOverViewController.preferredContentSize = CGSize(width: 300, height:129)
         popOverViewController.presentationController?.delegate = self
         popOverViewController.completionHandler = { selectRow in
             switch (selectRow) {
