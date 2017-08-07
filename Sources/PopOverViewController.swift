@@ -30,6 +30,7 @@ public class PopOverViewController: UITableViewController, UIAdaptivePresentatio
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 45
         tableView.tableFooterView = UIView()
+        tableView.flashScrollIndicators()
     }
     
     override public func viewWillAppear(_ animated: Bool) {
