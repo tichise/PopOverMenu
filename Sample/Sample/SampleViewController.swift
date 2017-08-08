@@ -25,12 +25,13 @@ class SampleViewController: UIViewController, UIAdaptivePresentationControllerDe
 
     
     public func openMenu(sender:UIBarButtonItem) {
-        let titles:NSArray = ["Menu1", "Menu2", "Menu3"]
-        let descriptions:NSArray = ["description1", "", "description3"]
+        let titles:Array<String> = ["Menu1", "Menu2", "Menu3"]
+        let descriptions:Array<String> = ["description1", "", "description3"]
         
         let popOverViewController = PopOverViewController.instantiate()
-        popOverViewController.setTitles(titles: titles)
-        popOverViewController.setDescriptions(descriptions: descriptions)
+        popOverViewController.setTitles(titles)
+        popOverViewController.setDescriptions(descriptions)
+        popOverViewController.setSelectRow(2)
         popOverViewController.popoverPresentationController?.barButtonItem = sender
         popOverViewController.preferredContentSize = CGSize(width: 300, height:129)
         popOverViewController.presentationController?.delegate = self

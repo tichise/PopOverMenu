@@ -7,8 +7,9 @@ import Foundation
 public class PopOverViewController: UITableViewController, UIAdaptivePresentationControllerDelegate {
     
     private var titles:Array<String> = []
-    private var descriptions:Array<String> = []
+    private var descriptions:Array<String>?
     public var completionHandler: ((_ selectRow: Int) -> Void)?
+    private var selectRow:Int?
     
     public static func instantiate() -> PopOverViewController {
         let storyboardsBundle = getStoryboardsBundle()
@@ -62,21 +63,45 @@ public class PopOverViewController: UITableViewController, UIAdaptivePresentatio
     override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UITableViewCell
         
-        let description:String? = descriptions[indexPath.row]
         let title:String? = titles[indexPath.row]
         
         // If explanation text is coming, display it in two lines
-        if (description?.characters.count)! > 0 {
-            cell = tableView.dequeueReusableCell(withIdentifier: "SubTitleCell")!
-
-            cell.textLabel?.text = title
-            cell.detailTextLabel?.text = description
-        } else {
+        if (descriptions == nil) {
             cell = tableView.dequeueReusableCell(withIdentifier: "SingleTitleCell")!
             cell.textLabel?.text = title
+        } else {
+            let description:String? = descriptions?[indexPath.row]
+
+            if (description?.characters.count)! > 0 {
+                cell = tableView.dequeueReusableCell(withIdentifier: "SubTitleCell")!
+                
+                cell.textLabel?.text = title
+                cell.detailTextLabel?.text = description
+            } else {
+                cell = tableView.dequeueReusableCell(withIdentifier: "SingleTitleCell")!
+                cell.textLabel?.text = title
+            }
+        }
+        
+        if (selectRow == nil) {
+            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+        } else {
+            cell.accessoryType = selectRow == indexPath.row ? UITableViewCellAccessoryType.checkmark : UITableViewCellAccessoryType.none
         }
 
         return cell
+    }
+    
+    public func setTitles(_ titles:Array<String>) {
+        self.titles = titles
+    }
+    
+    public func setDescriptions(_ descriptions:Array<String>) {
+        self.descriptions = descriptions
+    }
+    
+    public func setSelectRow(_ selectRow:Int) {
+        self.selectRow = selectRow
     }
     
     
@@ -92,14 +117,6 @@ public class PopOverViewController: UITableViewController, UIAdaptivePresentatio
                 self.completionHandler!(selectRow)
             }
         })
-    }
-    
-    public func setTitles(titles:NSArray) {
-        self.titles = titles as! Array<String>
-    }
-    
-    public func setDescriptions(descriptions:NSArray) {
-        self.descriptions = descriptions as! Array<String>
     }
     
     static func getStoryboardsBundle() -> Bundle {

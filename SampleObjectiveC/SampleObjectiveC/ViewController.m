@@ -34,8 +34,9 @@
     
     PopOverViewController *popOverViewController = [PopOverViewController instantiate];
     
-    [popOverViewController setTitlesWithTitles:titles];
-    [popOverViewController setDescriptionsWithDescriptions:descriptions];
+    [popOverViewController setTitles:titles];
+    [popOverViewController setDescriptions:descriptions];
+    [popOverViewController setSelectRow:2];
     
     popOverViewController.popoverPresentationController.barButtonItem = sender;
     popOverViewController.preferredContentSize = CGSizeMake(300, 135);
