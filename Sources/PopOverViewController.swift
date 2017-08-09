@@ -45,6 +45,11 @@ public class PopOverViewController: UITableViewController, UIAdaptivePresentatio
         super.viewWillAppear(animated)
         
         tableView.reloadData()
+        
+        if (selectRow != nil) {
+            let selectIndexPath:IndexPath = IndexPath(row: selectRow!, section: 0)
+            tableView.scrollToRow(at: selectIndexPath, at: .middle, animated: true)
+        }
     }
     
     @IBAction func close() {
