@@ -18,6 +18,12 @@ PopOverMenu is a PopOver style menu.
         let popOverViewController = PopOverViewController.instantiate()
         popOverViewController.setTitles(titles: titles)
         popOverViewController.setDescriptions(descriptions: descriptions)
+
+        // option parameteres
+        // popOverViewController.setSelectRow(1)
+        // popOverViewController.setShowsVerticalScrollIndicator(true)
+        // popOverViewController.setSeparatorStyle(UITableViewCellSeparatorStyle.singleLine)
+
         popOverViewController.popoverPresentationController?.barButtonItem = sender
         popOverViewController.preferredContentSize = CGSize(width: 300, height:135)
         popOverViewController.presentationController?.delegate = self
