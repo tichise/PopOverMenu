@@ -32,6 +32,8 @@ class SampleViewController: UIViewController, UIAdaptivePresentationControllerDe
         popOverViewController.setTitles(titles)
         popOverViewController.setDescriptions(descriptions)
         popOverViewController.setSelectRow(2)
+        // popOverViewController.setShowsVerticalScrollIndicator(true)
+        // popOverViewController.setSeparatorStyle(UITableViewCellSeparatorStyle.singleLine)
         popOverViewController.popoverPresentationController?.barButtonItem = sender
         popOverViewController.preferredContentSize = CGSize(width: 300, height:129)
         popOverViewController.presentationController?.delegate = self

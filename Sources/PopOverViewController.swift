@@ -11,6 +11,11 @@ public class PopOverViewController: UITableViewController, UIAdaptivePresentatio
     public var completionHandler: ((_ selectRow: Int) -> Void)?
     private var selectRow:Int?
     
+    private var separ:Int?
+    
+    private var separatorStyle: UITableViewCellSeparatorStyle = UITableViewCellSeparatorStyle.none
+    private var showsVerticalScrollIndicator:Bool = false
+    
     public static func instantiate() -> PopOverViewController {
         let storyboardsBundle = getStoryboardsBundle()
         let storyboard:UIStoryboard = UIStoryboard(name: "PopOver", bundle: storyboardsBundle)
@@ -32,7 +37,8 @@ public class PopOverViewController: UITableViewController, UIAdaptivePresentatio
         tableView.estimatedRowHeight = 45
         tableView.tableFooterView = UIView()
         tableView.showsHorizontalScrollIndicator = false
-        tableView.showsVerticalScrollIndicator = false
+        tableView.showsVerticalScrollIndicator = showsVerticalScrollIndicator
+        tableView.separatorStyle = separatorStyle
     }
     
     override public func viewWillAppear(_ animated: Bool) {
@@ -104,6 +110,13 @@ public class PopOverViewController: UITableViewController, UIAdaptivePresentatio
         self.selectRow = selectRow
     }
     
+    public func setSeparatorStyle(_ separatorStyle:UITableViewCellSeparatorStyle) {
+        self.separatorStyle = separatorStyle
+    }
+    
+    public func setShowsVerticalScrollIndicator(_ showsVerticalScrollIndicator:Bool) {
+        self.showsVerticalScrollIndicator = showsVerticalScrollIndicator
+    }
     
     /**
      * didSelectRowAtIndexPath
