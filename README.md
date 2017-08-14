@@ -4,7 +4,7 @@ PopOverMenu is a PopOver style menu.
 
 ### Image
 #### iPhone
-<img src="https://user-images.githubusercontent.com/43707/29021212-b8b8290c-7b9f-11e7-8c9d-8446327a324d.png" width="400px">
+<img src="https://user-images.githubusercontent.com/43707/29257422-db4db7e6-80ec-11e7-9a42-cd75a06ca73c.png" width="400px">
 
 ### Examples
 
