@@ -97,7 +97,7 @@ public class PopOverViewController: UITableViewController, UIAdaptivePresentatio
         }
         
         if (selectRow == nil) {
-            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+            cell.accessoryType = UITableViewCellAccessoryType.none
         } else {
             cell.accessoryType = selectRow == indexPath.row ? UITableViewCellAccessoryType.checkmark : UITableViewCellAccessoryType.none
         }
