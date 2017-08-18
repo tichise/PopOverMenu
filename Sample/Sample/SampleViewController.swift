@@ -10,7 +10,7 @@ import PopOverMenu
 
 class SampleViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
     
-    @IBOutlet var baseTextView:UITextView?
+    @IBOutlet weak var baseTextView:UITextView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
