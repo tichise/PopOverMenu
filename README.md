@@ -46,6 +46,11 @@ PopOverMenu is a PopOver style menu.
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.none
     }
+
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
 ```
 
 #### ObjectiveC
@@ -87,12 +92,10 @@ PopOverMenu is a PopOver style menu.
     return UIModalPresentationNone;
 }
 
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller traitCollection:(UITraitCollection *)traitCollection {
+    return UIModalPresentationNone;
+}
 ```
 
 ### Installation (CocoaPods)
 `pod PopOverMenu`
-
-or 
-
-`pod 'PopOverMenu', :git => 'https://github.com/tichise/PopOverMenu.git'`
-
