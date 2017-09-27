@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'PopOverMenu'
-  s.version = '1.9.2'
+  s.version = '2.0.0'
   s.license = 'MIT'
   s.summary = 'PopOverMenu is a PopOver style menu.'
   s.homepage = 'https://github.com/tichise/PopOverMenu'
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
 
   s.source_files = 'Sources/*.swift'
   s.requires_arc = true
-  
+
   s.resource_bundles = {
     'Storyboards' => [
         'Storyboards/*.storyboard'
