@@ -55,7 +55,7 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
     }
     
     @IBAction func close() {
-        dismiss(animated: true, completion: { _ in })
+        dismiss(animated: true, completion: nil)
     }
     
     override open func didReceiveMemoryWarning() {

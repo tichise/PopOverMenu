@@ -24,7 +24,7 @@ class SampleViewController: UIViewController, UIAdaptivePresentationControllerDe
     }
 
     
-    public func openMenu(sender:UIBarButtonItem) {
+    @objc public func openMenu(sender:UIBarButtonItem) {
         let titles:Array<String> = ["Menu1", "Menu2", "Menu3"]
         let descriptions:Array<String> = ["description1", "", "description3"]
         
