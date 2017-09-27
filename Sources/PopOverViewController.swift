@@ -4,19 +4,19 @@
 
 import Foundation
 
-public class PopOverViewController: UITableViewController, UIAdaptivePresentationControllerDelegate {
+open class PopOverViewController: UITableViewController, UIAdaptivePresentationControllerDelegate {
     
-    private var titles:Array<String> = []
-    private var descriptions:Array<String>?
-    public var completionHandler: ((_ selectRow: Int) -> Void)?
-    private var selectRow:Int?
+    fileprivate var titles:Array<String> = []
+    fileprivate var descriptions:Array<String>?
+    open var completionHandler: ((_ selectRow: Int) -> Void)?
+    fileprivate var selectRow:Int?
     
-    private var separ:Int?
+    fileprivate var separ:Int?
     
-    private var separatorStyle: UITableViewCellSeparatorStyle = UITableViewCellSeparatorStyle.none
-    private var showsVerticalScrollIndicator:Bool = false
+    fileprivate var separatorStyle: UITableViewCellSeparatorStyle = UITableViewCellSeparatorStyle.none
+    fileprivate var showsVerticalScrollIndicator:Bool = false
     
-    public static func instantiate() -> PopOverViewController {
+    open static func instantiate() -> PopOverViewController {
         let storyboardsBundle = getStoryboardsBundle()
         let storyboard:UIStoryboard = UIStoryboard(name: "PopOver", bundle: storyboardsBundle)
         let popOverViewController:PopOverViewController = storyboard.instantiateViewController(withIdentifier: "PopOverViewController") as! PopOverViewController
@@ -30,7 +30,7 @@ public class PopOverViewController: UITableViewController, UIAdaptivePresentatio
         return popOverViewController
     }
     
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -43,7 +43,7 @@ public class PopOverViewController: UITableViewController, UIAdaptivePresentatio
 
     }
     
-    override public func viewWillAppear(_ animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         tableView.reloadData()
@@ -58,22 +58,22 @@ public class PopOverViewController: UITableViewController, UIAdaptivePresentatio
         dismiss(animated: true, completion: { _ in })
     }
     
-    override public func didReceiveMemoryWarning() {
+    override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     // MARK: - table
     
-    override public func numberOfSections(in tableView: UITableView) -> Int {
+    override open func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return titles.count
     }
     
     
-    override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UITableViewCell
         
         let title:String? = titles[indexPath.row]
@@ -105,30 +105,30 @@ public class PopOverViewController: UITableViewController, UIAdaptivePresentatio
         return cell
     }
     
-    public func setTitles(_ titles:Array<String>) {
+    open func setTitles(_ titles:Array<String>) {
         self.titles = titles
     }
     
-    public func setDescriptions(_ descriptions:Array<String>) {
+    open func setDescriptions(_ descriptions:Array<String>) {
         self.descriptions = descriptions
     }
     
-    public func setSelectRow(_ selectRow:Int) {
+    open func setSelectRow(_ selectRow:Int) {
         self.selectRow = selectRow
     }
     
-    public func setSeparatorStyle(_ separatorStyle:UITableViewCellSeparatorStyle) {
+    open func setSeparatorStyle(_ separatorStyle:UITableViewCellSeparatorStyle) {
         self.separatorStyle = separatorStyle
     }
     
-    public func setShowsVerticalScrollIndicator(_ showsVerticalScrollIndicator:Bool) {
+    open func setShowsVerticalScrollIndicator(_ showsVerticalScrollIndicator:Bool) {
         self.showsVerticalScrollIndicator = showsVerticalScrollIndicator
     }
     
     /**
      * didSelectRowAtIndexPath
      */
-    override public func tableView(_ tableview: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override open func tableView(_ tableview: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         self.dismiss(animated: true, completion: {
