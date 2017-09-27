@@ -8,7 +8,7 @@ public class PopOverViewController: UITableViewController, UIAdaptivePresentatio
     
     private var titles:Array<String> = []
     private var descriptions:Array<String>?
-    public var completionHandler: ((_ selectRow: Int) -> Void)?
+    @objc public var completionHandler: ((_ selectRow: Int) -> Void)?
     private var selectRow:Int?
     
     private var separ:Int?
@@ -16,7 +16,7 @@ public class PopOverViewController: UITableViewController, UIAdaptivePresentatio
     private var separatorStyle: UITableViewCellSeparatorStyle = UITableViewCellSeparatorStyle.none
     private var showsVerticalScrollIndicator:Bool = false
     
-    public static func instantiate() -> PopOverViewController {
+    @objc public static func instantiate() -> PopOverViewController {
         let storyboardsBundle = getStoryboardsBundle()
         let storyboard:UIStoryboard = UIStoryboard(name: "PopOver", bundle: storyboardsBundle)
         let popOverViewController:PopOverViewController = storyboard.instantiateViewController(withIdentifier: "PopOverViewController") as! PopOverViewController
@@ -55,7 +55,7 @@ public class PopOverViewController: UITableViewController, UIAdaptivePresentatio
     }
     
     @IBAction func close() {
-        dismiss(animated: true, completion: { _ in })
+        dismiss(animated: true, completion: nil)
     }
     
     override public func didReceiveMemoryWarning() {
@@ -105,23 +105,23 @@ public class PopOverViewController: UITableViewController, UIAdaptivePresentatio
         return cell
     }
     
-    public func setTitles(_ titles:Array<String>) {
+    @objc public func setTitles(_ titles:Array<String>) {
         self.titles = titles
     }
     
-    public func setDescriptions(_ descriptions:Array<String>) {
+    @objc public func setDescriptions(_ descriptions:Array<String>) {
         self.descriptions = descriptions
     }
     
-    public func setSelectRow(_ selectRow:Int) {
+    @objc public func setSelectRow(_ selectRow:Int) {
         self.selectRow = selectRow
     }
     
-    public func setSeparatorStyle(_ separatorStyle:UITableViewCellSeparatorStyle) {
+    @objc public func setSeparatorStyle(_ separatorStyle:UITableViewCellSeparatorStyle) {
         self.separatorStyle = separatorStyle
     }
     
-    public func setShowsVerticalScrollIndicator(_ showsVerticalScrollIndicator:Bool) {
+    @objc public func setShowsVerticalScrollIndicator(_ showsVerticalScrollIndicator:Bool) {
         self.showsVerticalScrollIndicator = showsVerticalScrollIndicator
     }
     
