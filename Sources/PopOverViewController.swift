@@ -8,7 +8,7 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
     
     fileprivate var titles:Array<String> = []
     fileprivate var descriptions:Array<String>?
-    open var completionHandler: ((_ selectRow: Int) -> Void)?
+    @objc open var completionHandler: ((_ selectRow: Int) -> Void)?
     fileprivate var selectRow:Int?
     
     fileprivate var separ:Int?
@@ -16,7 +16,7 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
     fileprivate var separatorStyle: UITableViewCellSeparatorStyle = UITableViewCellSeparatorStyle.none
     fileprivate var showsVerticalScrollIndicator:Bool = false
     
-    open static func instantiate() -> PopOverViewController {
+    @objc open static func instantiate() -> PopOverViewController {
         let storyboardsBundle = getStoryboardsBundle()
         let storyboard:UIStoryboard = UIStoryboard(name: "PopOver", bundle: storyboardsBundle)
         let popOverViewController:PopOverViewController = storyboard.instantiateViewController(withIdentifier: "PopOverViewController") as! PopOverViewController
@@ -105,23 +105,23 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
         return cell
     }
     
-    open func setTitles(_ titles:Array<String>) {
+    @objc open func setTitles(_ titles:Array<String>) {
         self.titles = titles
     }
     
-    open func setDescriptions(_ descriptions:Array<String>) {
+    @objc open func setDescriptions(_ descriptions:Array<String>) {
         self.descriptions = descriptions
     }
     
-    open func setSelectRow(_ selectRow:Int) {
+    @objc open func setSelectRow(_ selectRow:Int) {
         self.selectRow = selectRow
     }
     
-    open func setSeparatorStyle(_ separatorStyle:UITableViewCellSeparatorStyle) {
+    @objc open func setSeparatorStyle(_ separatorStyle:UITableViewCellSeparatorStyle) {
         self.separatorStyle = separatorStyle
     }
     
-    open func setShowsVerticalScrollIndicator(_ showsVerticalScrollIndicator:Bool) {
+    @objc open func setShowsVerticalScrollIndicator(_ showsVerticalScrollIndicator:Bool) {
         self.showsVerticalScrollIndicator = showsVerticalScrollIndicator
     }
     
