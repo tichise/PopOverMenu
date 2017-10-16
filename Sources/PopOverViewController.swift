@@ -85,7 +85,7 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
         } else {
             let description:String? = descriptions?[indexPath.row]
 
-            if (description?.characters.count)! > 0 {
+            if (description?.count)! > 0 {
                 cell = tableView.dequeueReusableCell(withIdentifier: "SubTitleCell")!
                 
                 cell.textLabel?.text = title
