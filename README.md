@@ -100,5 +100,8 @@ PopOverMenu is a PopOver style menu.
 ### Installation (CocoaPods)
 `pod PopOverMenu`
 
+### CocoaPods URL
+- [PopOverMenu on CocoaPods.org](https://cocoapods.org/pods/PopOverMenu)
+
 ### License
 PopOverMenu is available under the MIT license. See the LICENSE file for more info.
