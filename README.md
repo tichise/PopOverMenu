@@ -65,8 +65,8 @@ PopOverMenu is a PopOver style menu.
     
     PopOverViewController *popOverViewController = [PopOverViewController instantiate];
     
-    [popOverViewController setTitlesWithTitles:titles];
-    [popOverViewController setDescriptionsWithDescriptions:descriptions];
+    [popOverViewController setTitles:titles];
+    [popOverViewController setDescriptions:descriptions];
     
     popOverViewController.popoverPresentationController.barButtonItem = sender;
     popOverViewController.preferredContentSize = CGSizeMake(300, 135);
