@@ -6,15 +6,15 @@ import Foundation
 
 open class PopOverViewController: UITableViewController, UIAdaptivePresentationControllerDelegate {
     
-    fileprivate var titles:Array<String> = []
-    fileprivate var descriptions:Array<String>?
+    var titles:Array<String> = []
+    var descriptions:Array<String>?
     @objc open var completionHandler: ((_ selectRow: Int) -> Void)?
-    fileprivate var selectRow:Int?
+    var selectRow:Int?
     
-    fileprivate var separ:Int?
+    var separ:Int?
     
-    fileprivate var separatorStyle: UITableViewCellSeparatorStyle = UITableViewCellSeparatorStyle.none
-    fileprivate var showsVerticalScrollIndicator:Bool = false
+    var separatorStyle: UITableViewCellSeparatorStyle = UITableViewCellSeparatorStyle.none
+    var showsVerticalScrollIndicator = false
     
     @objc open static func instantiate() -> PopOverViewController {
         let storyboardsBundle = getStoryboardsBundle()
@@ -54,55 +54,8 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
         }
     }
     
-    @IBAction func close() {
-        dismiss(animated: true, completion: nil)
-    }
-    
     override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    // MARK: - table
-    
-    override open func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titles.count
-    }
-    
-    
-    override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: UITableViewCell
-        
-        let title:String? = titles[indexPath.row]
-        
-        // If explanation text is coming, display it in two lines
-        if (descriptions == nil) {
-            cell = tableView.dequeueReusableCell(withIdentifier: "SingleTitleCell")!
-            cell.textLabel?.text = title
-        } else {
-            let description:String? = descriptions?[indexPath.row]
-
-            if (description?.count)! > 0 {
-                cell = tableView.dequeueReusableCell(withIdentifier: "SubTitleCell")!
-                
-                cell.textLabel?.text = title
-                cell.detailTextLabel?.text = description
-            } else {
-                cell = tableView.dequeueReusableCell(withIdentifier: "SingleTitleCell")!
-                cell.textLabel?.text = title
-            }
-        }
-        
-        if (selectRow == nil) {
-            cell.accessoryType = UITableViewCellAccessoryType.none
-        } else {
-            cell.accessoryType = selectRow == indexPath.row ? UITableViewCellAccessoryType.checkmark : UITableViewCellAccessoryType.none
-        }
-
-        return cell
     }
     
     @objc open func setTitles(_ titles:Array<String>) {
@@ -123,20 +76,6 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
     
     @objc open func setShowsVerticalScrollIndicator(_ showsVerticalScrollIndicator:Bool) {
         self.showsVerticalScrollIndicator = showsVerticalScrollIndicator
-    }
-    
-    /**
-     * didSelectRowAtIndexPath
-     */
-    override open func tableView(_ tableview: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        self.dismiss(animated: true, completion: {
-            if self.completionHandler != nil {
-                let selectRow:Int = indexPath.row
-                self.completionHandler!(selectRow)
-            }
-        })
     }
     
     static func getStoryboardsBundle() -> Bundle {
