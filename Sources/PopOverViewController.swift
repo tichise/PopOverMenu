@@ -42,8 +42,7 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
         tableView.showsHorizontalScrollIndicator = false
         tableView.showsVerticalScrollIndicator = showsVerticalScrollIndicator
         tableView.separatorStyle = separatorStyle
-        tableView.accessibilityIdentifier = "PopUpTableView"
-
+        tableView.accessibilityIdentifier = "PopOverMenuTableView"
     }
     
     override open func viewWillAppear(_ animated: Bool) {
