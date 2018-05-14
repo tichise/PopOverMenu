@@ -10,6 +10,9 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
     var descriptions:Array<String>?
     @objc open var completionHandler: ((_ selectRow: Int) -> Void)?
     var selectRow:Int?
+    var titleTextLabelFont:UIFont = UIFont.systemFont(ofSize: 15)
+    var detailTextLabelFont:UIFont = UIFont.systemFont(ofSize: 10)
+    var cellHeight:CGFloat = 45
     
     var separ:Int?
     
@@ -34,7 +37,7 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
         super.viewDidLoad()
         
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 45
+        tableView.estimatedRowHeight = cellHeight
         tableView.tableFooterView = UIView()
         tableView.showsHorizontalScrollIndicator = false
         tableView.showsVerticalScrollIndicator = showsVerticalScrollIndicator
@@ -66,12 +69,24 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
         self.descriptions = descriptions
     }
     
+    @objc open func setCellHeight(_ cellHeight:CGFloat) {
+        self.cellHeight = cellHeight
+    }
+    
     @objc open func setSelectRow(_ selectRow:Int) {
         self.selectRow = selectRow
     }
     
     @objc open func setSeparatorStyle(_ separatorStyle:UITableViewCellSeparatorStyle) {
         self.separatorStyle = separatorStyle
+    }
+    
+    @objc open func setTitleTextLabelFont(_ titleTextLabelFont:UIFont) {
+        self.titleTextLabelFont = titleTextLabelFont
+    }
+    
+    @objc open func setDetailTextLabelFont(_ detailTextLabelFont:UIFont) {
+        self.detailTextLabelFont = detailTextLabelFont
     }
     
     @objc open func setShowsVerticalScrollIndicator(_ showsVerticalScrollIndicator:Bool) {
