@@ -19,22 +19,27 @@ extension PopOverViewController {
         
         let title = titles[indexPath.row]
         
-        // If explanation text is coming, display it in two lines
-        if (descriptions == nil) {
+        if isDescriptions() {
+            
+            cell = tableView.dequeueReusableCell(withIdentifier: "SubTitleCell")!
+            
+            cell.textLabel?.text = title
+            cell.textLabel?.font = titleTextLabelFont
+            cell.textLabel?.sizeToFit()
+            
+            if let descriptions = self.descriptions {
+                let description = descriptions[indexPath.row]
+                
+                cell.detailTextLabel?.text = description
+                cell.detailTextLabel?.font = detailTextLabelFont
+                cell.detailTextLabel?.sizeToFit()
+            }
+            
+        } else {
             cell = tableView.dequeueReusableCell(withIdentifier: "SingleTitleCell")!
             cell.textLabel?.text = title
-        } else {
-            let description:String? = descriptions?[indexPath.row]
-
-            if (description?.count)! > 0 {
-                cell = tableView.dequeueReusableCell(withIdentifier: "SubTitleCell")!
-                
-                cell.textLabel?.text = title
-                cell.detailTextLabel?.text = description
-            } else {
-                cell = tableView.dequeueReusableCell(withIdentifier: "SingleTitleCell")!
-                cell.textLabel?.text = title
-            }
+            cell.textLabel?.font = titleTextLabelFont
+            cell.textLabel?.sizeToFit()
         }
         
         if (selectRow == nil) {
@@ -46,6 +51,18 @@ extension PopOverViewController {
         return cell
     }
     
+    private func isDescriptions() -> Bool {
+        guard let descriptions = self.descriptions else {
+            return false
+        }
+        
+        if descriptions.count > 0 {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     override open func tableView(_ tableview: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -55,5 +72,9 @@ extension PopOverViewController {
                 handler(selectRow)
             }
         })
+    }
+    
+    override open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return cellHeight
     }
 }

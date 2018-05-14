@@ -32,6 +32,11 @@ class SampleViewController: UIViewController, UIAdaptivePresentationControllerDe
         popOverViewController.setTitles(titles)
         popOverViewController.setDescriptions(descriptions)
         popOverViewController.setSelectRow(2)
+        
+        // popOverViewController.setCellHeight(50)
+        // popOverViewController.setTitleTextLabelFont(UIFont.systemFont(ofSize: 20))
+        // popOverViewController.setDetailTextLabelFont(UIFont.systemFont(ofSize: 15))
+
         // popOverViewController.setShowsVerticalScrollIndicator(true)
         // popOverViewController.setSeparatorStyle(UITableViewCellSeparatorStyle.singleLine)
         popOverViewController.popoverPresentationController?.barButtonItem = sender
