@@ -43,9 +43,9 @@ extension PopOverViewController {
         }
         
         if (selectRow == nil) {
-            cell.accessoryType = UITableViewCellAccessoryType.none
+            cell.accessoryType = UITableViewCell.AccessoryType.none
         } else {
-            cell.accessoryType = selectRow == indexPath.row ? UITableViewCellAccessoryType.checkmark : UITableViewCellAccessoryType.none
+            cell.accessoryType = selectRow == indexPath.row ? UITableViewCell.AccessoryType.checkmark : UITableViewCell.AccessoryType.none
         }
 
         return cell
