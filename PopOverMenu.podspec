@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.resource_bundles = {
-    'Storyboards' => [
+    'PopOverMenuStoryboards' => [
         'Storyboards/*.storyboard'
     ]
   }
