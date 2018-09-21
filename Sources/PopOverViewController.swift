@@ -16,10 +16,10 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
     
     var separ:Int?
     
-    var separatorStyle: UITableViewCellSeparatorStyle = UITableViewCellSeparatorStyle.none
+    var separatorStyle: UITableViewCell.SeparatorStyle = UITableViewCell.SeparatorStyle.none
     var showsVerticalScrollIndicator = false
     
-    @objc open static func instantiate() -> PopOverViewController {
+    @objc public static func instantiate() -> PopOverViewController {
         let storyboardsBundle = getStoryboardsBundle()
         let storyboard:UIStoryboard = UIStoryboard(name: "PopOver", bundle: storyboardsBundle)
         let popOverViewController:PopOverViewController = storyboard.instantiateViewController(withIdentifier: "PopOverViewController") as! PopOverViewController
@@ -36,7 +36,7 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
     override open func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = cellHeight
         tableView.tableFooterView = UIView()
         tableView.showsHorizontalScrollIndicator = false
@@ -76,7 +76,7 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
         self.selectRow = selectRow
     }
     
-    @objc open func setSeparatorStyle(_ separatorStyle:UITableViewCellSeparatorStyle) {
+    @objc open func setSeparatorStyle(_ separatorStyle:UITableViewCell.SeparatorStyle) {
         self.separatorStyle = separatorStyle
     }
     
@@ -94,7 +94,7 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
     
     static func getStoryboardsBundle() -> Bundle {
         let podBundle = Bundle(for: PopOverViewController.self)
-        let bundleURL = podBundle.url(forResource: "Storyboards", withExtension: "bundle")
+        let bundleURL = podBundle.url(forResource: "PopOverMenuStoryboards", withExtension: "bundle")
         let bundle = Bundle(url: bundleURL!)!
         
         return bundle
