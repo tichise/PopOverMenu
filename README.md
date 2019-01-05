@@ -12,8 +12,8 @@ PopOverMenu is a PopOver style menu.
 
 ```html
     public func openMenu(sender:UIBarButtonItem) {
-        let titles:NSArray = ["Menu1", "Menu2", "Menu3"]
-        let descriptions:NSArray = ["description1", "", "description3"]
+        let titles = ["Menu1", "Menu2", "Menu3"]
+        let descriptions = ["description1", "", "description3"]
         
         let popOverViewController = PopOverViewController.instantiate()
         popOverViewController.setTitles(titles: titles)
