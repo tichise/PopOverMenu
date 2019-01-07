@@ -60,35 +60,35 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
         super.didReceiveMemoryWarning()
     }
     
-    @objc open func setTitles(_ titles:Array<String>) {
+    @objc open func set(titles:Array<String>) {
         self.titles = titles
     }
     
-    @objc open func setDescriptions(_ descriptions:Array<String>) {
+    @objc open func set(descriptions:Array<String>) {
         self.descriptions = descriptions
     }
     
-    @objc open func setCellHeight(_ cellHeight:CGFloat) {
+    @objc open func set(cellHeight:CGFloat) {
         self.cellHeight = cellHeight
     }
     
-    @objc open func setSelectRow(_ selectRow:Int) {
+    @objc open func set(selectRow:Int) {
         self.selectRow = selectRow
     }
     
-    @objc open func setSeparatorStyle(_ separatorStyle:UITableViewCell.SeparatorStyle) {
+    @objc open func set(separatorStyle:UITableViewCell.SeparatorStyle) {
         self.separatorStyle = separatorStyle
     }
     
-    @objc open func setTitleTextLabelFont(_ titleTextLabelFont:UIFont) {
+    @objc open func set(titleTextLabelFont:UIFont) {
         self.titleTextLabelFont = titleTextLabelFont
     }
     
-    @objc open func setDetailTextLabelFont(_ detailTextLabelFont:UIFont) {
+    @objc open func set(detailTextLabelFont:UIFont) {
         self.detailTextLabelFont = detailTextLabelFont
     }
     
-    @objc open func setShowsVerticalScrollIndicator(_ showsVerticalScrollIndicator:Bool) {
+    @objc open func set(showsVerticalScrollIndicator:Bool) {
         self.showsVerticalScrollIndicator = showsVerticalScrollIndicator
     }
     

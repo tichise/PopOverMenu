@@ -25,20 +25,21 @@ class SampleViewController: UIViewController, UIAdaptivePresentationControllerDe
 
     
     @objc public func openMenu(sender:UIBarButtonItem) {
-        let titles:Array<String> = ["Menu1", "Menu2", "Menu3"]
-        let descriptions:Array<String> = ["description1", "", "description3"]
+        let titles = ["Menu1", "Menu2", "Menu3"]
+        let descriptions = ["description1", "", "description3"]
         
         let popOverViewController = PopOverViewController.instantiate()
-        popOverViewController.setTitles(titles)
-        popOverViewController.setDescriptions(descriptions)
-        popOverViewController.setSelectRow(2)
-        
-        // popOverViewController.setCellHeight(50)
-        // popOverViewController.setTitleTextLabelFont(UIFont.systemFont(ofSize: 20))
-        // popOverViewController.setDetailTextLabelFont(UIFont.systemFont(ofSize: 15))
+        popOverViewController.set(titles: titles)
+        popOverViewController.set(descriptions: descriptions)
+        popOverViewController.set(selectRow: 2)
 
-        // popOverViewController.setShowsVerticalScrollIndicator(true)
-        // popOverViewController.setSeparatorStyle(UITableViewCellSeparatorStyle.singleLine)
+        /*
+        popOverViewController.set(cellHeight: 50)
+        popOverViewController.set(titleTextLabelFont: UIFont.systemFont(ofSize: 20))
+        popOverViewController.set(detailTextLabelFont: UIFont.systemFont(ofSize: 15))
+        popOverViewController.set(showsVerticalScrollIndicator: true)
+        popOverViewController.set(separatorStyle: UITableViewCell.SeparatorStyle.singleLine)
+        */
         popOverViewController.popoverPresentationController?.barButtonItem = sender
         popOverViewController.preferredContentSize = CGSize(width: 300, height:129)
         popOverViewController.presentationController?.delegate = self
