@@ -10,8 +10,6 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
     var descriptions: [String]?
     @objc open var completionHandler: ((_ selectRow: Int) -> Void)?
     var selectRow:Int?
-    var separ:Int?
-    
     var titleLabelFont: UIFont = UIFont.systemFont(ofSize: 15)
     var detailLabelFont: UIFont = UIFont.systemFont(ofSize: 10)
     var cellHeight: CGFloat = 45
