@@ -60,11 +60,11 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
         super.didReceiveMemoryWarning()
     }
     
-    @objc open func set(titles:Array<String>) {
+    @objc open func set(titles: [String]) {
         self.titles = titles
     }
     
-    @objc open func set(descriptions:Array<String>) {
+    @objc open func set(descriptions: [String]) {
         self.descriptions = descriptions
     }
     
