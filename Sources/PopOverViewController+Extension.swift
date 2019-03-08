@@ -2,16 +2,14 @@
 //  PopOverViewController+Extension.swift
 //
 
-import PopOverMenu
-
 extension PopOverViewController {
 
     open func setPopOverMenu(delegate: UIAdaptivePresentationControllerDelegate, barButtonItem: UIBarButtonItem, titles: [String], descriptions: [String], onSelected: @escaping (Int) -> Void) {
 
         self.set(titles: titles)
         self.set(descriptions: descriptions)
-        self.set(titleTextLabelFont: UIFont.systemFont(ofSize: 16))
-        self.set(detailTextLabelFont: UIFont.systemFont(ofSize: 12))
+        self.set(titleLabelFont: UIFont.systemFont(ofSize: 16))
+        self.set(detailLabelFont: UIFont.systemFont(ofSize: 12))
         self.set(cellHeight: 60)
         self.popoverPresentationController?.barButtonItem = barButtonItem
         self.preferredContentSize = CGSize(width: 300, height: 120)

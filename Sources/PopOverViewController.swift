@@ -6,16 +6,14 @@ import Foundation
 
 open class PopOverViewController: UITableViewController, UIAdaptivePresentationControllerDelegate {
     
-    var titles:Array<String> = []
-    var descriptions:Array<String>?
+    var titles: [String] = []
+    var descriptions: [String]?
     @objc open var completionHandler: ((_ selectRow: Int) -> Void)?
     var selectRow:Int?
-    var titleTextLabelFont:UIFont = UIFont.systemFont(ofSize: 15)
-    var detailTextLabelFont:UIFont = UIFont.systemFont(ofSize: 10)
-    var cellHeight:CGFloat = 45
-    
-    var separ:Int?
-    
+    var titleLabelFont: UIFont = UIFont.systemFont(ofSize: 15)
+    var detailLabelFont: UIFont = UIFont.systemFont(ofSize: 10)
+    var cellHeight: CGFloat = 45
+
     var separatorStyle: UITableViewCell.SeparatorStyle = UITableViewCell.SeparatorStyle.none
     var showsVerticalScrollIndicator = false
     
@@ -35,8 +33,13 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
     
     override open func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.rowHeight = UITableView.automaticDimension
+
+        #if swift(>=4.2)
+            tableView.rowHeight = UITableView.automaticDimension
+        #else
+            tableView.rowHeight = UITableViewAutomaticDimension
+        #endif
+
         tableView.estimatedRowHeight = cellHeight
         tableView.tableFooterView = UIView()
         tableView.showsHorizontalScrollIndicator = false
@@ -60,35 +63,35 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
         super.didReceiveMemoryWarning()
     }
     
-    @objc open func set(titles:Array<String>) {
+    @objc open func set(titles: [String]) {
         self.titles = titles
     }
     
-    @objc open func set(descriptions:Array<String>) {
+    @objc open func set(descriptions: [String]) {
         self.descriptions = descriptions
     }
     
-    @objc open func set(cellHeight:CGFloat) {
+    @objc open func set(cellHeight: CGFloat) {
         self.cellHeight = cellHeight
     }
     
-    @objc open func set(selectRow:Int) {
+    @objc open func set(selectRow: Int) {
         self.selectRow = selectRow
     }
     
-    @objc open func set(separatorStyle:UITableViewCell.SeparatorStyle) {
+    @objc open func set(separatorStyle: UITableViewCell.SeparatorStyle) {
         self.separatorStyle = separatorStyle
     }
     
-    @objc open func set(titleTextLabelFont:UIFont) {
-        self.titleTextLabelFont = titleTextLabelFont
+    @objc open func set(titleLabelFont: UIFont) {
+        self.titleLabelFont = titleLabelFont
     }
     
-    @objc open func set(detailTextLabelFont:UIFont) {
-        self.detailTextLabelFont = detailTextLabelFont
+    @objc open func set(detailLabelFont: UIFont) {
+        self.detailLabelFont = detailLabelFont
     }
     
-    @objc open func set(showsVerticalScrollIndicator:Bool) {
+    @objc open func set(showsVerticalScrollIndicator: Bool) {
         self.showsVerticalScrollIndicator = showsVerticalScrollIndicator
     }
     

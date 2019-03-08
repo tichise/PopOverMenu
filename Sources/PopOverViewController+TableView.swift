@@ -24,21 +24,21 @@ extension PopOverViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: "SubTitleCell")!
             
             cell.textLabel?.text = title
-            cell.textLabel?.font = titleTextLabelFont
+            cell.textLabel?.font = titleLabelFont
             cell.textLabel?.sizeToFit()
             
             if let descriptions = self.descriptions {
                 let description = descriptions[indexPath.row]
                 
                 cell.detailTextLabel?.text = description
-                cell.detailTextLabel?.font = detailTextLabelFont
+                cell.detailTextLabel?.font = detailLabelFont
                 cell.detailTextLabel?.sizeToFit()
             }
             
         } else {
             cell = tableView.dequeueReusableCell(withIdentifier: "SingleTitleCell")!
             cell.textLabel?.text = title
-            cell.textLabel?.font = titleTextLabelFont
+            cell.textLabel?.font = titleLabelFont
             cell.textLabel?.sizeToFit()
         }
         
