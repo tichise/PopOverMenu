@@ -33,11 +33,10 @@
     NSArray *descriptions = @[@"description1", @"", @"description3"];
     
     PopOverViewController *popOverViewController = [PopOverViewController instantiate];
-    
-    [popOverViewController setTitles:titles];
-    [popOverViewController setDescriptions:descriptions];
-    [popOverViewController setSelectRow:2];
-    
+    [popOverViewController setWithTitles:titles];
+    [popOverViewController setWithDescriptions:descriptions];
+    [popOverViewController setWithSelectRow:2];
+
     popOverViewController.popoverPresentationController.barButtonItem = sender;
     popOverViewController.preferredContentSize = CGSizeMake(300, 135);
     popOverViewController.presentationController.delegate = self;
