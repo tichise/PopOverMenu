@@ -6,8 +6,8 @@ import Foundation
 
 open class PopOverViewController: UITableViewController, UIAdaptivePresentationControllerDelegate {
     
-    var titles:Array<String> = []
-    var descriptions:Array<String>?
+    var titles: [String] = []
+    var descriptions: [String]?
     @objc open var completionHandler: ((_ selectRow: Int) -> Void)?
     var selectRow:Int?
     var titleTextLabelFont:UIFont = UIFont.systemFont(ofSize: 15)
