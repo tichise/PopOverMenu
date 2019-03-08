@@ -9,13 +9,15 @@ import UIKit
 import PopOverMenu
 
 class SampleViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
-    
-    @IBOutlet weak var baseTextView:UITextView?
+
+    var popOverViewController: PopOverViewController?
+
+    @IBOutlet weak var textLabel:UILabel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let barButtonItem:UIBarButtonItem = UIBarButtonItem(title: "menu", style: .plain, target: self, action: #selector(SampleViewController.openMenu(sender:)))
+
+        let barButtonItem = UIBarButtonItem(title: "menu", style: .plain, target: self, action: #selector(SampleViewController.openMenu(sender:)))
         self.navigationItem.rightBarButtonItem = barButtonItem
     }
 
@@ -23,48 +25,35 @@ class SampleViewController: UIViewController, UIAdaptivePresentationControllerDe
         super.didReceiveMemoryWarning()
     }
 
-    
-    @objc public func openMenu(sender:UIBarButtonItem) {
+    @objc func openMenu(sender: UIBarButtonItem) {
+        self.popOverViewController = PopOverViewController.instantiate()
+
         let titles = ["Menu1", "Menu2", "Menu3"]
         let descriptions = ["description1", "", "description3"]
-        
-        let popOverViewController = PopOverViewController.instantiate()
-        popOverViewController.set(titles: titles)
-        popOverViewController.set(descriptions: descriptions)
-        popOverViewController.set(selectRow: 2)
 
-        /*
-        popOverViewController.set(cellHeight: 50)
-        popOverViewController.set(titleTextLabelFont: UIFont.systemFont(ofSize: 20))
-        popOverViewController.set(detailTextLabelFont: UIFont.systemFont(ofSize: 15))
-        popOverViewController.set(showsVerticalScrollIndicator: true)
-        popOverViewController.set(separatorStyle: UITableViewCell.SeparatorStyle.singleLine)
-        */
-        popOverViewController.popoverPresentationController?.barButtonItem = sender
-        popOverViewController.preferredContentSize = CGSize(width: 300, height:129)
-        popOverViewController.presentationController?.delegate = self
-        popOverViewController.completionHandler = { selectRow in
-            switch (selectRow) {
-            case 0:
-                break
-            case 1:
-                break
-            case 2:
-                break
-            default:
-                break
-            }
-            
-        };
-        present(popOverViewController, animated: true, completion: nil)
+        self.popOverViewController?.setPopOverMenu(delegate: self, barButtonItem: sender, titles: titles, descriptions: descriptions) { (selectRow) in
+            self.textLabel?.text = String(selectRow)
+        }
+
+        if let popOverViewController = self.popOverViewController {
+            present(popOverViewController, animated: true, completion: nil)
+        }
     }
-    
+
+    // 画面回転時によばれる
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate(alongsideTransition: { context in
+            self.popOverViewController?.dismiss(animated: true)
+        })
+    }
+
+    // iPhone でもポップオーバーを表示するためには、下記の delegate メソッドで常に UIModalPresentationNone を返すようにします。
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.none
     }
-    
+
+    // これを入れないと、iPhone PlusでLandscape時にPopOverMenuがModal表示される
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.none
     }
 }
-

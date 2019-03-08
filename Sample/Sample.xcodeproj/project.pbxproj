@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2F12422F3D5D49AADA9F45B4 /* Pods_SampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDF132C1A0E0C3BF00BDEAC /* Pods_SampleTests.framework */; };
+		791E2EFD223218D6008A653D /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791E2EFC223218D6008A653D /* RootViewController.swift */; };
+		791E2F2122324768008A653D /* PopOverViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791E2F2022324768008A653D /* PopOverViewController+Extension.swift */; };
 		798268FE1F1F269B0090613B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798268FD1F1F269B0090613B /* AppDelegate.swift */; };
 		798269001F1F269B0090613B /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798268FF1F1F269B0090613B /* SampleViewController.swift */; };
 		798269031F1F269B0090613B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 798269011F1F269B0090613B /* Main.storyboard */; };
@@ -38,6 +40,8 @@
 /* Begin PBXFileReference section */
 		27840C9FFD85AEF74A2C48AE /* Pods-Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sample/Pods-Sample.release.xcconfig"; sourceTree = "<group>"; };
 		6DE2A0A34D972BF56626BC88 /* Pods-SampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SampleTests/Pods-SampleTests.release.xcconfig"; sourceTree = "<group>"; };
+		791E2EFC223218D6008A653D /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		791E2F2022324768008A653D /* PopOverViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PopOverViewController+Extension.swift"; sourceTree = "<group>"; };
 		798268FA1F1F269B0090613B /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		798268FD1F1F269B0090613B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		798268FF1F1F269B0090613B /* SampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +123,8 @@
 			isa = PBXGroup;
 			children = (
 				798268FD1F1F269B0090613B /* AppDelegate.swift */,
+				791E2EFC223218D6008A653D /* RootViewController.swift */,
+				791E2F2022324768008A653D /* PopOverViewController+Extension.swift */,
 				798268FF1F1F269B0090613B /* SampleViewController.swift */,
 				798269011F1F269B0090613B /* Main.storyboard */,
 				798269041F1F269B0090613B /* Assets.xcassets */,
@@ -358,6 +364,8 @@
 			files = (
 				798269001F1F269B0090613B /* SampleViewController.swift in Sources */,
 				798268FE1F1F269B0090613B /* AppDelegate.swift in Sources */,
+				791E2F2122324768008A653D /* PopOverViewController+Extension.swift in Sources */,
+				791E2EFD223218D6008A653D /* RootViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
