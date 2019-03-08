@@ -61,7 +61,7 @@ extension PopOverViewController {
         }
     }
 
-    open func setPopOverMenu<T: CaseIterable & RawRepresentable & Hashable>(delegate: UIAdaptivePresentationControllerDelegate, view: UIView, enumType: T.Type, selectedValue: T?, onSelected: @escaping (_ key: T) -> ()) {
+    open func setPopOverMenu<T: CaseIterable & RawRepresentable & Hashable>(delegate: UIAdaptivePresentationControllerDelegate, view: UIView, enumType: T.Type, selectedEnum: T?, onSelected: @escaping (_ key: T) -> ()) {
 
         let baseTitles = enumType.allCases.map{$0.rawValue}
 
@@ -78,8 +78,8 @@ extension PopOverViewController {
         self.set(titles: titles)
         self.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.any
 
-        if let selectedValue = selectedValue {
-            guard let index = allCases.index(of: selectedValue) else {
+        if let selectedEnum = selectedEnum {
+            guard let index = allCases.index(of: selectedEnum) else {
                 return
             }
 

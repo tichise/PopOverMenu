@@ -95,7 +95,7 @@ class RootViewController: UITableViewController, UIAdaptivePresentationControlle
     func openMenuForEnum(view :UIView) {
         self.popOverViewController = PopOverViewController.instantiate()
 
-        self.popOverViewController?.setPopOverMenu(delegate: self, view: view, enumType: FoodName.self, selectedValue: selectedFoodName, onSelected: { (selectedFoodName) in
+        self.popOverViewController?.setPopOverMenu(delegate: self, view: view, enumType: FoodName.self, selectedEnum: selectedFoodName, onSelected: { (selectedFoodName) in
 
             self.selectedFoodName = selectedFoodName
 
