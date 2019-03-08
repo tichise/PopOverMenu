@@ -79,11 +79,11 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
     }
     
     @objc open func set(titleTextLabelFont: UIFont) {
-        self.titleTextLabelFont = titleTextLabelFont
+        self.titleLabelFont = titleTextLabelFont
     }
     
     @objc open func set(detailTextLabelFont: UIFont) {
-        self.detailTextLabelFont = detailTextLabelFont
+        self.detailLabelFont = detailTextLabelFont
     }
     
     @objc open func set(showsVerticalScrollIndicator: Bool) {
