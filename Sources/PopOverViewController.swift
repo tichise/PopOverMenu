@@ -68,27 +68,27 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
         self.descriptions = descriptions
     }
     
-    @objc open func set(cellHeight:CGFloat) {
+    @objc open func set(cellHeight: CGFloat) {
         self.cellHeight = cellHeight
     }
     
-    @objc open func set(selectRow:Int) {
+    @objc open func set(selectRow: Int) {
         self.selectRow = selectRow
     }
     
-    @objc open func set(separatorStyle:UITableViewCell.SeparatorStyle) {
+    @objc open func set(separatorStyle: UITableViewCell.SeparatorStyle) {
         self.separatorStyle = separatorStyle
     }
     
-    @objc open func set(titleTextLabelFont:UIFont) {
+    @objc open func set(titleTextLabelFont: UIFont) {
         self.titleTextLabelFont = titleTextLabelFont
     }
     
-    @objc open func set(detailTextLabelFont:UIFont) {
+    @objc open func set(detailTextLabelFont: UIFont) {
         self.detailTextLabelFont = detailTextLabelFont
     }
     
-    @objc open func set(showsVerticalScrollIndicator:Bool) {
+    @objc open func set(showsVerticalScrollIndicator: Bool) {
         self.showsVerticalScrollIndicator = showsVerticalScrollIndicator
     }
     
