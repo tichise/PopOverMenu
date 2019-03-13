@@ -56,6 +56,7 @@ Basic
 
 Array
 ```html
+    func openMenu(view :UIView) {
         let popOverViewController = PopOverViewController.instantiate()
 
         let titles = [ "Menu1", "Menu2", "Menu3"]
@@ -69,14 +70,26 @@ Array
         }
 
         self.present(popOverViewController, animated: true) {() -> Void in }
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
+
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
 ```
 
 Array / with all
 ```html
+    func openMenu(view :UIView) {
         let popOverViewController = PopOverViewController.instantiate()
 
         let titles = ["Menu1", "Menu2", "Menu3"]
         let keys = [1, 2, 3]
+        let allName = "All"
 
         popOverViewController?.setArrayForView(delegate: self, view: view, titles: titles, keys: keys, defaultKey: selectedIntKey, allName: allName, onSelected: { (key, index) in
             self.selectedIntKey = key
@@ -85,11 +98,23 @@ Array / with all
         })
 
         self.present(popOverViewController, animated: true) {() -> Void in }
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
+
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
 ```
 
 Enum
 ```html
+    func openMenu(view :UIView) {
         let popOverViewController = PopOverViewController.instantiate()
+        let allName = "All"
 
         popOverViewController?.setEnumForView(delegate: self, view: view, enumType: FoodName.self, defaultEnum: selectedFoodName, allName: allName, onSelected: { (key, index) in
             print("key is  \(String(describing: key)) , index is  \(index) ")
@@ -106,6 +131,16 @@ Enum
         })
 
         self.present(popOverViewController, animated: true) {() -> Void in }
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
+
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
 ```
 
 UIBarButtonItem
