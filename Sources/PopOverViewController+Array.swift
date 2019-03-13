@@ -58,9 +58,8 @@ extension PopOverViewController {
         self.preferredContentSize = CGSize(width: 300, height: menuHeight)
         self.presentationController?.delegate = delegate
         self.completionHandler = {(_ selectRow: Int) -> Void in
-            if let key = keys[selectRow] {
-                onSelected(key, selectRow)
-            }
+            let key = keys[selectRow]
+            onSelected(key, selectRow)
         }
     }
 }
