@@ -9,10 +9,12 @@ import PopOverMenu
 class RootViewController: UITableViewController, UIAdaptivePresentationControllerDelegate {
 
     var popOverViewController: PopOverViewController?
-    var section1 = ["Array", "Enum", "Array（All selectable）", "Enum（All selectable）"]
-    var section2 = ["UIBarButtonItem"]
+    var section1 = ["Int Array",  "String Array", "Int Array（All selectable）"]
+    var section2 = ["Enum",  "Enum（All selectable）"]
+    var section3 = ["UIBarButtonItem"]
 
-    var selectedKey: Int? = nil
+    var selectedIntKey: Int? = nil
+    var selectedStringKey: String? = nil
     var selectedFoodName: FoodName?
 
     @IBOutlet weak var baseTextView:UITextView?
@@ -35,7 +37,9 @@ class RootViewController: UITableViewController, UIAdaptivePresentationControlle
         if section == 0 {
             return section1.count
         } else if section == 1 {
-                return section2.count
+            return section2.count
+        } else if section == 2 {
+            return section3.count
         } else {
             return 0
         }
@@ -48,11 +52,16 @@ class RootViewController: UITableViewController, UIAdaptivePresentationControlle
             let text = section1[indexPath.row]
             cell.textLabel!.text = text
             return cell
+        } else if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath)
 
+            let text = section2[indexPath.row]
+            cell.textLabel!.text = text
+            return cell
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MoveCell", for: indexPath)
 
-            let text = section2[indexPath.row]
+            let text = section3[indexPath.row]
             cell.textLabel!.text = text
             return cell
         }
@@ -61,19 +70,23 @@ class RootViewController: UITableViewController, UIAdaptivePresentationControlle
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            let cell = tableView.cellForRow(at: indexPath)
-            guard let contentView = cell?.contentView else {
-                return
-            }
+        let cell = tableView.cellForRow(at: indexPath)
+        guard let contentView = cell?.contentView else {
+            return
+        }
 
+        if indexPath.section == 0 {
             if indexPath.row == 0 {
-                openArrayMenu(view: contentView)
+                openIntArrayMenu(view: contentView)
             } else if indexPath.row == 1 {
-                openEnumMenu(view: contentView)
+                openStringArrayMenu(view: contentView)
             } else if indexPath.row == 2 {
-                openArrayMenu(view: contentView, allName: "All")
-            } else if indexPath.row == 3 {
+                openIntArrayMenu(view: contentView, allName: "All")
+            }
+        } else if indexPath.section == 1 {
+            if indexPath.row == 0 {
+                openEnumMenu(view: contentView)
+            } else if indexPath.row == 1 {
                 openEnumMenu(view: contentView, allName: "All")
             }
         }
@@ -83,15 +96,17 @@ class RootViewController: UITableViewController, UIAdaptivePresentationControlle
 
     // MARK: - function
 
-    func openArrayMenu(view :UIView) {
+    func openIntArrayMenu(view :UIView) {
         self.popOverViewController = PopOverViewController.instantiate()
 
         let titles = [ "Menu1", "Menu2", "Menu3"]
         let keys = [1, 2, 3]
 
-        self.popOverViewController?.setArrayForView(delegate: self, view: view, titles: titles, keys: keys, defaultKey: selectedKey) { (key, index) in
+        self.popOverViewController?.setArrayForView(delegate: self, view: view, titles: titles, keys: keys, defaultKey: selectedIntKey) { (key, index) in
 
-            self.selectedKey = key
+            self.selectedIntKey = key
+
+            print("key is  \(String(describing: key)) , index is  \(index) ")
         }
 
         if let popOverViewController = self.popOverViewController {
@@ -99,15 +114,34 @@ class RootViewController: UITableViewController, UIAdaptivePresentationControlle
         }
     }
 
-    func openEnumMenu(view :UIView) {
+    func openStringArrayMenu(view :UIView) {
         self.popOverViewController = PopOverViewController.instantiate()
 
-        self.popOverViewController?.setEnumForView(delegate: self, view: view, enumType: FoodName.self, defaultEnum: selectedFoodName, onSelected: { (selectedFoodName, index)  in
+        let titles = [ "Menu1", "Menu2", "Menu3"]
+        let keys = ["menu1", "menu2", "menu3"]
 
-            self.selectedFoodName = selectedFoodName
+        self.popOverViewController?.setArrayForView(delegate: self, view: view, titles: titles, keys: keys, defaultKey: selectedStringKey) { (key, index) in
 
-            let foodValue = unsafeBitCast(selectedFoodName, to: FoodValue.self)
-            print(foodValue.rawValue)
+            self.selectedStringKey = key
+
+            print("key is  \(String(describing: key)) , index is  \(index) ")
+        }
+
+        if let popOverViewController = self.popOverViewController {
+            self.present(popOverViewController, animated: true) {() -> Void in }
+        }
+    }
+
+    func openIntArrayMenu(view :UIView, allName: String) {
+        self.popOverViewController = PopOverViewController.instantiate()
+
+        let titles = ["Menu1", "Menu2", "Menu3"]
+        let keys = [1, 2, 3]
+
+        self.popOverViewController?.setArrayForView(delegate: self, view: view, titles: titles, keys: keys, defaultKey: selectedIntKey, allName: allName, onSelected: { (key, index) in
+            self.selectedIntKey = key
+
+            print("key is  \(String(describing: key)) , index is  \(index) ")
         })
 
         if let popOverViewController = self.popOverViewController {
@@ -115,16 +149,19 @@ class RootViewController: UITableViewController, UIAdaptivePresentationControlle
         }
     }
 
-    // MARK: - 
+    // MARK: - Enum
 
-    func openArrayMenu(view :UIView, allName: String) {
+    func openEnumMenu(view :UIView) {
         self.popOverViewController = PopOverViewController.instantiate()
 
-        let titles = ["Menu1", "Menu2", "Menu3"]
-        let keys = [1, 2, 3]
+        self.popOverViewController?.setEnumForView(delegate: self, view: view, enumType: FoodName.self, defaultEnum: selectedFoodName, onSelected: { (key, index)  in
 
-        self.popOverViewController?.setArrayForView(delegate: self, view: view, titles: titles, keys: keys, defaultKey: selectedKey, allName: allName, onSelected: { (key, index) in
-            self.selectedKey = key
+            self.selectedFoodName = key
+
+            let foodValue = unsafeBitCast(key, to: FoodValue.self)
+            print(foodValue.rawValue)
+
+            print("key is  \(String(describing: key)) , index is  \(index) ")
         })
 
         if let popOverViewController = self.popOverViewController {
@@ -136,6 +173,8 @@ class RootViewController: UITableViewController, UIAdaptivePresentationControlle
         self.popOverViewController = PopOverViewController.instantiate()
 
         self.popOverViewController?.setEnumForView(delegate: self, view: view, enumType: FoodName.self, defaultEnum: selectedFoodName, allName: allName, onSelected: { (key, index) in
+            print("key is  \(String(describing: key)) , index is  \(index) ")
+
             if index == 0 {
                 self.selectedFoodName = nil
             } else {
