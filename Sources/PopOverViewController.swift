@@ -102,4 +102,13 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
         
         return bundle
     }
+
+    internal func getMenuHeight(view: UIView, titles: [String]) -> CGFloat {
+        let menuRowsLength = CGFloat((titles.count) * 43)
+        let viewHeight = view.frame.size.height
+        let menumaxHeight = viewHeight - 70
+        let menuHeight = menuRowsLength > menumaxHeight ? menumaxHeight : menuRowsLength
+
+        return menuHeight
+    }
 }

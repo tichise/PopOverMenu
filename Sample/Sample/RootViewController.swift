@@ -9,7 +9,7 @@ import PopOverMenu
 class RootViewController: UITableViewController, UIAdaptivePresentationControllerDelegate {
 
     var popOverViewController: PopOverViewController?
-    var section1 = ["View : Array", "View : Enum"]
+    var section1 = ["Array", "Enum", "Array（All selectable）", "Enum（All selectable）"]
     var section2 = ["UIBarButtonItem"]
 
     var selectedKey: Int? = nil
@@ -68,22 +68,29 @@ class RootViewController: UITableViewController, UIAdaptivePresentationControlle
             }
 
             if indexPath.row == 0 {
-                openMenuForArray(view: contentView)
+                openArrayMenu(view: contentView)
             } else if indexPath.row == 1 {
-                openMenuForEnum(view: contentView)
+                openEnumMenu(view: contentView)
+            } else if indexPath.row == 2 {
+                openArrayMenu(view: contentView, allName: "All")
+            } else if indexPath.row == 3 {
+                openEnumMenu(view: contentView, allName: "All")
             }
         }
 
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    func openMenuForArray(view :UIView) {
+    // MARK: - function
+
+    func openArrayMenu(view :UIView) {
         self.popOverViewController = PopOverViewController.instantiate()
 
-        let titles = ["Menu1", "Menu2", "Menu3", "Menu1", "Menu2", "Menu3"]
-        let keys = [1, 2, 3, 1, 2, 3]
+        let titles = [ "Menu1", "Menu2", "Menu3"]
+        let keys = [1, 2, 3]
 
-        self.popOverViewController?.setPopOverMenu(delegate: self, view: view, titles: titles, keys: keys, selectedKey: selectedKey) { (key) in
+        self.popOverViewController?.setArrayForView(delegate: self, view: view, titles: titles, keys: keys, defaultKey: selectedKey) { (key, index) in
+
             self.selectedKey = key
         }
 
@@ -92,15 +99,52 @@ class RootViewController: UITableViewController, UIAdaptivePresentationControlle
         }
     }
 
-    func openMenuForEnum(view :UIView) {
+    func openEnumMenu(view :UIView) {
         self.popOverViewController = PopOverViewController.instantiate()
 
-        self.popOverViewController?.setPopOverMenu(delegate: self, view: view, enumType: FoodName.self, selectedEnum: selectedFoodName, onSelected: { (selectedFoodName) in
+        self.popOverViewController?.setEnumForView(delegate: self, view: view, enumType: FoodName.self, defaultEnum: selectedFoodName, onSelected: { (selectedFoodName, index)  in
 
             self.selectedFoodName = selectedFoodName
 
             let foodValue = unsafeBitCast(selectedFoodName, to: FoodValue.self)
             print(foodValue.rawValue)
+        })
+
+        if let popOverViewController = self.popOverViewController {
+            self.present(popOverViewController, animated: true) {() -> Void in }
+        }
+    }
+
+    // MARK: - 
+
+    func openArrayMenu(view :UIView, allName: String) {
+        self.popOverViewController = PopOverViewController.instantiate()
+
+        let titles = ["Menu1", "Menu2", "Menu3"]
+        let keys = [1, 2, 3]
+
+        self.popOverViewController?.setArrayForView(delegate: self, view: view, titles: titles, keys: keys, defaultKey: selectedKey, allName: allName, onSelected: { (key, index) in
+            self.selectedKey = key
+        })
+
+        if let popOverViewController = self.popOverViewController {
+            self.present(popOverViewController, animated: true) {() -> Void in }
+        }
+    }
+
+    func openEnumMenu(view :UIView, allName: String) {
+        self.popOverViewController = PopOverViewController.instantiate()
+
+        self.popOverViewController?.setEnumForView(delegate: self, view: view, enumType: FoodName.self, defaultEnum: selectedFoodName, allName: allName, onSelected: { (key, index) in
+            if index == 0 {
+                self.selectedFoodName = nil
+            } else {
+
+                self.selectedFoodName = key
+
+                let foodValue = unsafeBitCast(key, to: FoodValue.self)
+                print(foodValue.rawValue)
+            }
         })
 
         if let popOverViewController = self.popOverViewController {
