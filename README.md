@@ -10,6 +10,7 @@ PopOverMenu is a PopOver style menu.
 
 #### Swift
 
+Basic
 ```html
     public func openMenu(sender:UIBarButtonItem) {
         let titles = ["Menu1", "Menu2", "Menu3"]
@@ -50,6 +51,78 @@ PopOverMenu is a PopOver style menu.
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.none
+    }
+```
+
+Array
+```html
+        let popOverViewController = PopOverViewController.instantiate()
+
+        let titles = [ "Menu1", "Menu2", "Menu3"]
+        let keys = [1, 2, 3]
+
+        popOverViewController?.setArrayForView(delegate: self, view: view, titles: titles, keys: keys, defaultKey: selectedIntKey) { (key, index) in
+
+            self.selectedIntKey = key
+
+            print("key is  \(String(describing: key)) , index is  \(index) ")
+        }
+
+        self.present(popOverViewController, animated: true) {() -> Void in }
+```
+
+Array / with all
+```html
+        let popOverViewController = PopOverViewController.instantiate()
+
+        let titles = ["Menu1", "Menu2", "Menu3"]
+        let keys = [1, 2, 3]
+
+        popOverViewController?.setArrayForView(delegate: self, view: view, titles: titles, keys: keys, defaultKey: selectedIntKey, allName: allName, onSelected: { (key, index) in
+            self.selectedIntKey = key
+
+            print("key is  \(String(describing: key)) , index is  \(index) ")
+        })
+
+        self.present(popOverViewController, animated: true) {() -> Void in }
+```
+
+Enum
+```html
+        let popOverViewController = PopOverViewController.instantiate()
+
+        popOverViewController?.setEnumForView(delegate: self, view: view, enumType: FoodName.self, defaultEnum: selectedFoodName, allName: allName, onSelected: { (key, index) in
+            print("key is  \(String(describing: key)) , index is  \(index) ")
+
+            if index == 0 {
+                self.selectedFoodName = nil
+            } else {
+
+                self.selectedFoodName = key
+
+                let foodValue = unsafeBitCast(key, to: FoodValue.self)
+                print(foodValue.rawValue)
+            }
+        })
+
+        self.present(popOverViewController, animated: true) {() -> Void in }
+```
+
+UIBarButtonItem
+```html
+    func openMenu(sender: UIBarButtonItem) {
+        self.popOverViewController = PopOverViewController.instantiate()
+
+        let titles = ["Menu1", "Menu2", "Menu3"]
+        let descriptions = ["description1", "", "description3"]
+
+        self.popOverViewController?.setArrayForBarButtonItem(delegate: self, barButtonItem: sender, titles: titles, descriptions: descriptions) { (selectRow) in
+            self.textLabel?.text = String(selectRow)
+        }
+
+        if let popOverViewController = self.popOverViewController {
+            present(popOverViewController, animated: true, completion: nil)
+        }
     }
 ```
 
