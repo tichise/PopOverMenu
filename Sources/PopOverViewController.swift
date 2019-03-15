@@ -14,8 +14,8 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
     var detailLabelFont: UIFont = UIFont.systemFont(ofSize: 10)
     var cellHeight: CGFloat = 45
 
-    var separatorStyle: UITableViewCell.SeparatorStyle = UITableViewCell.SeparatorStyle.none
-    var showsVerticalScrollIndicator = false
+    var storedSeparatorStyle: UITableViewCell.SeparatorStyle = UITableViewCell.SeparatorStyle.none
+    var storedShowsVerticalScrollIndicator = false
     
     @objc public static func instantiate() -> PopOverViewController {
         let storyboardsBundle = getStoryboardsBundle()
@@ -43,8 +43,8 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
         tableView.estimatedRowHeight = cellHeight
         tableView.tableFooterView = UIView()
         tableView.showsHorizontalScrollIndicator = false
-        tableView.showsVerticalScrollIndicator = showsVerticalScrollIndicator
-        tableView.separatorStyle = separatorStyle
+        tableView.showsVerticalScrollIndicator = storedShowsVerticalScrollIndicator
+        tableView.separatorStyle = storedSeparatorStyle
         tableView.accessibilityIdentifier = "PopOverMenuTableView"
     }
     
@@ -80,7 +80,7 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
     }
     
     @objc open func set(separatorStyle: UITableViewCell.SeparatorStyle) {
-        self.separatorStyle = separatorStyle
+        self.storedSeparatorStyle = separatorStyle
     }
     
     @objc open func set(titleLabelFont: UIFont) {
@@ -92,7 +92,7 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
     }
     
     @objc open func set(showsVerticalScrollIndicator: Bool) {
-        self.showsVerticalScrollIndicator = showsVerticalScrollIndicator
+        self.storedShowsVerticalScrollIndicator = showsVerticalScrollIndicator
     }
     
     static func getStoryboardsBundle() -> Bundle {
