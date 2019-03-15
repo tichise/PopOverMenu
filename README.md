@@ -144,20 +144,51 @@ Enum
 ```
 
 UIBarButtonItem
+One step
 ```html
     func openMenu(sender: UIBarButtonItem) {
-        self.popOverViewController = PopOverViewController.instantiate()
+        let popOverViewController = PopOverViewController.instantiate()
 
         let titles = ["Menu1", "Menu2", "Menu3"]
-        let descriptions = ["description1", "", "description3"]
 
-        self.popOverViewController?.setArrayForBarButtonItem(delegate: self, barButtonItem: sender, titles: titles, descriptions: descriptions) { (selectRow) in
+        self.popOverViewController?.setArrayForBarButtonItem(delegate: self, barButtonItem: sender, titles: titles, separatorStyle: .singleLine) { (selectRow) in
             self.textLabel?.text = String(selectRow)
         }
 
-        if let popOverViewController = self.popOverViewController {
-            present(popOverViewController, animated: true, completion: nil)
+        present(popOverViewController, animated: true, completion: nil)
+    }
+
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
+
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
+```
+
+Two step
+```html
+    func openMenu(sender: UIBarButtonItem) {
+        let popOverViewController = PopOverViewController.instantiate()
+
+        let titles = ["Menu1", "Menu2", "Menu3"]
+        let descriptions = ["description1", "description2", "description3"]
+
+        self.popOverViewController?.setArrayForBarButtonItem(delegate: self, barButtonItem: sender, titles: titles, descriptions: descriptions, separatorStyle: .none) { (selectRow) in
+            self.textLabel?.text = String(selectRow)
         }
+
+        present(popOverViewController, animated: true, completion: nil)
+    }
+
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
+
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
 ```
 
