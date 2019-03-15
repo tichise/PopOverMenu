@@ -30,7 +30,7 @@ class RootViewController: UITableViewController, UIAdaptivePresentationControlle
     // MARK: - Table View
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -58,7 +58,7 @@ class RootViewController: UITableViewController, UIAdaptivePresentationControlle
             let text = section2[indexPath.row]
             cell.textLabel!.text = text
             return cell
-        } else if indexPath.section == 1 {
+        } else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MoveCell", for: indexPath)
 
             let text = section3[indexPath.row]
