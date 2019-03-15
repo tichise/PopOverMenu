@@ -29,9 +29,9 @@ class SampleViewController: UIViewController, UIAdaptivePresentationControllerDe
         self.popOverViewController = PopOverViewController.instantiate()
 
         let titles = ["Menu1", "Menu2", "Menu3"]
-        let descriptions = ["description1", "", "description3"]
+        let descriptions = ["description1", "description2", "description3"]
 
-        self.popOverViewController?.setArrayForBarButtonItem(delegate: self, barButtonItem: sender, titles: titles, descriptions: descriptions) { (selectRow) in
+        self.popOverViewController?.setArrayForBarButtonItem(delegate: self, barButtonItem: sender, titles: titles, descriptions: descriptions, separatorStyle: .singleLine) { (selectRow) in
             self.textLabel?.text = String(selectRow)
         }
 
