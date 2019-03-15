@@ -14,16 +14,16 @@ Basic
 ```html
     public func openMenu(sender:UIBarButtonItem) {
         let titles = ["Menu1", "Menu2", "Menu3"]
-        let descriptions = ["description1", "", "description3"]
+        let descriptions = ["description1", "description2", "description3"]
         
         let popOverViewController = PopOverViewController.instantiate()
-        popOverViewController.setTitles(titles: titles)
-        popOverViewController.setDescriptions(descriptions: descriptions)
+        popOverViewController.set(titles: titles)
+        popOverViewController.set(descriptions: descriptions)
 
         // option parameteres
-        // popOverViewController.setSelectRow(1)
-        // popOverViewController.setShowsVerticalScrollIndicator(true)
-        // popOverViewController.setSeparatorStyle(UITableViewCellSeparatorStyle.singleLine)
+        // popOverViewController.set(selectRow: 1)
+        // popOverViewController.set(showsVerticalScrollIndicator: true)
+        // popOverViewController.set(separatorStyle: UITableViewCellSeparatorStyle.singleLine)
 
         popOverViewController.popoverPresentationController?.barButtonItem = sender
         popOverViewController.preferredContentSize = CGSize(width: 300, height:135)
