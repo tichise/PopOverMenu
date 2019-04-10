@@ -24,7 +24,7 @@ extension PopOverViewController {
         self.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.any
 
         if let selectedEnum = defaultEnum {
-            guard let index = allCases.index(of: selectedEnum) else {
+            guard let index = allCases.firstIndex(of: selectedEnum) else {
                 return
             }
 
@@ -67,7 +67,7 @@ extension PopOverViewController {
         self.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.any
 
         if let selectedEnum = defaultEnum {
-            guard let index = allCases.index(of: selectedEnum) else {
+            guard let index = allCases.firstIndex(of: selectedEnum) else {
                 return
             }
 
