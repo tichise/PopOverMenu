@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'PopOverMenu'
-  s.version = '2.5.0'
+  s.version = '2.5.1'
   s.license = 'MIT'
   s.summary = 'PopOverMenu is a PopOver style menu.'
   s.homepage = 'https://github.com/tichise/PopOverMenu'
