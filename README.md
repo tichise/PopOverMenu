@@ -1,4 +1,4 @@
-### PopOverMenu
+### PopOverMenu ![CocoaPods Version](https://img.shields.io/cocoapods/v/PopOverMenu.svg?style=flat) ![Platform](https://img.shields.io/cocoapods/p/PopOverMenu.svg?style=flat) ![License](https://img.shields.io/cocoapods/l/PopOverMenu.svg?style=flat)
 
 PopOverMenu is a PopOver style menu.
 
