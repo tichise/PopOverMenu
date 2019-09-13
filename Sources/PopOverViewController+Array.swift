@@ -31,7 +31,7 @@ extension PopOverViewController {
             return
         }
 
-        guard var keys = keys else {
+        guard let keys = keys else {
             return
         }
 
