@@ -4,7 +4,7 @@
 
 extension PopOverViewController {
 
-    open func setEnumForView<T: CaseIterable & RawRepresentable & Hashable>(delegate: UIAdaptivePresentationControllerDelegate, view: UIView, enumType: T.Type, defaultEnum: T?, allName: String, onSelected: @escaping (_ key: T?, _ index: Int) -> ()) {
+    open func setEnumForView<T: CaseIterable & RawRepresentable & Hashable>(delegate: UIAdaptivePresentationControllerDelegate, view: UIView, enumType: T.Type, defaultEnum: T?, allName: String, separatorStyle: UITableViewCell.SeparatorStyle, onSelected: @escaping (_ key: T?, _ index: Int) -> ()) {
 
         let baseTitles = enumType.allCases.map{$0.rawValue}
 
@@ -19,7 +19,7 @@ extension PopOverViewController {
         }
 
         self.set(showsVerticalScrollIndicator: true)
-        self.set(separatorStyle: .singleLine)
+        self.set(separatorStyle: separatorStyle)
         self.set(titles: titles)
         self.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.any
 
@@ -49,7 +49,7 @@ extension PopOverViewController {
         }
     }
 
-    open func setEnumForView<T: CaseIterable & RawRepresentable & Hashable>(delegate: UIAdaptivePresentationControllerDelegate, view: UIView, enumType: T.Type, defaultEnum: T?, onSelected: @escaping (_ key: T?, _ index: Int) -> ()) {
+    open func setEnumForView<T: CaseIterable & RawRepresentable & Hashable>(delegate: UIAdaptivePresentationControllerDelegate, view: UIView, enumType: T.Type, defaultEnum: T?, separatorStyle: UITableViewCell.SeparatorStyle, onSelected: @escaping (_ key: T?, _ index: Int) -> ()) {
 
         let baseTitles = enumType.allCases.map{$0.rawValue}
 
@@ -62,7 +62,7 @@ extension PopOverViewController {
         }
 
         self.set(showsVerticalScrollIndicator: true)
-        self.set(separatorStyle: .singleLine)
+        self.set(separatorStyle: separatorStyle)
         self.set(titles: titles)
         self.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.any
 

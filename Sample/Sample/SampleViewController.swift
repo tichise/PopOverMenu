@@ -10,6 +10,8 @@ import PopOverMenu
 
 class SampleViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
 
+    let separatorStyle: UITableViewCell.SeparatorStyle = .none
+
     var popOverViewController: PopOverViewController?
 
     @IBOutlet weak var textLabel:UILabel?
@@ -31,7 +33,7 @@ class SampleViewController: UIViewController, UIAdaptivePresentationControllerDe
         let titles = ["Menu1", "Menu2", "Menu3"]
         let descriptions = ["description1", "description2", "description3"]
 
-        self.popOverViewController?.setArrayForBarButtonItem(delegate: self, barButtonItem: sender, titles: titles, descriptions: descriptions, separatorStyle: .none) { (selectRow) in
+        self.popOverViewController?.setArrayForBarButtonItem(delegate: self, barButtonItem: sender, titles: titles, descriptions: descriptions, separatorStyle: separatorStyle) { (selectRow) in
             self.textLabel?.text = String(selectRow)
         }
 
