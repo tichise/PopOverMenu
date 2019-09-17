@@ -10,7 +10,7 @@ import PopOverMenu
 
 class SampleViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
 
-    let separatorStyle: UITableViewCell.SeparatorStyle = .none
+    let separatorStyle: UITableViewCell.SeparatorStyle = .singleLine
 
     var popOverViewController: PopOverViewController?
 

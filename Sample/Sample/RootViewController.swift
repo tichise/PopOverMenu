@@ -8,7 +8,7 @@ import PopOverMenu
 
 class RootViewController: UITableViewController, UIAdaptivePresentationControllerDelegate {
 
-    let separatorStyle: UITableViewCell.SeparatorStyle = .none
+    let separatorStyle: UITableViewCell.SeparatorStyle = .singleLine
 
     var popOverViewController: PopOverViewController?
     var section1 = ["Int Array",  "String Array", "Int Array（All selectable）"]
