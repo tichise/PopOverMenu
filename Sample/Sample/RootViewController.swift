@@ -8,6 +8,8 @@ import PopOverMenu
 
 class RootViewController: UITableViewController, UIAdaptivePresentationControllerDelegate {
 
+    let separatorStyle: UITableViewCell.SeparatorStyle = .singleLine
+
     var popOverViewController: PopOverViewController?
     var section1 = ["Int Array",  "String Array", "Int Array（All selectable）"]
     var section2 = ["Enum",  "Enum（All selectable）"]
@@ -102,7 +104,7 @@ class RootViewController: UITableViewController, UIAdaptivePresentationControlle
         let titles = [ "Menu1", "Menu2", "Menu3"]
         let keys = [1, 2, 3]
 
-        self.popOverViewController?.setArrayForView(delegate: self, view: view, titles: titles, keys: keys, defaultKey: selectedIntKey) { (key, index) in
+        self.popOverViewController?.setArrayForView(delegate: self, view: view, titles: titles, keys: keys, defaultKey: selectedIntKey, separatorStyle: separatorStyle) { (key, index) in
 
             self.selectedIntKey = key
 
@@ -120,7 +122,7 @@ class RootViewController: UITableViewController, UIAdaptivePresentationControlle
         let titles = [ "Menu1", "Menu2", "Menu3"]
         let keys = ["menu1", "menu2", "menu3"]
 
-        self.popOverViewController?.setArrayForView(delegate: self, view: view, titles: titles, keys: keys, defaultKey: selectedStringKey) { (key, index) in
+        self.popOverViewController?.setArrayForView(delegate: self, view: view, titles: titles, keys: keys, defaultKey: selectedStringKey, separatorStyle: separatorStyle) { (key, index) in
 
             self.selectedStringKey = key
 
@@ -138,7 +140,7 @@ class RootViewController: UITableViewController, UIAdaptivePresentationControlle
         let titles = ["Menu1", "Menu2", "Menu3"]
         let keys = [1, 2, 3]
 
-        self.popOverViewController?.setArrayForView(delegate: self, view: view, titles: titles, keys: keys, defaultKey: selectedIntKey, allName: allName, onSelected: { (key, index) in
+        self.popOverViewController?.setArrayForView(delegate: self, view: view, titles: titles, keys: keys, defaultKey: selectedIntKey, allName: allName, separatorStyle: separatorStyle, onSelected: { (key, index) in
             self.selectedIntKey = key
 
             print("key is  \(String(describing: key)) , index is  \(index) ")
@@ -154,7 +156,7 @@ class RootViewController: UITableViewController, UIAdaptivePresentationControlle
     func openEnumMenu(view :UIView) {
         self.popOverViewController = PopOverViewController.instantiate()
 
-        self.popOverViewController?.setEnumForView(delegate: self, view: view, enumType: FoodName.self, defaultEnum: selectedFoodName, onSelected: { (key, index)  in
+        self.popOverViewController?.setEnumForView(delegate: self, view: view, enumType: FoodName.self, defaultEnum: selectedFoodName, separatorStyle: separatorStyle, onSelected: { (key, index)  in
 
             self.selectedFoodName = key
 
@@ -172,7 +174,7 @@ class RootViewController: UITableViewController, UIAdaptivePresentationControlle
     func openEnumMenu(view :UIView, allName: String) {
         self.popOverViewController = PopOverViewController.instantiate()
 
-        self.popOverViewController?.setEnumForView(delegate: self, view: view, enumType: FoodName.self, defaultEnum: selectedFoodName, allName: allName, onSelected: { (key, index) in
+        self.popOverViewController?.setEnumForView(delegate: self, view: view, enumType: FoodName.self, defaultEnum: selectedFoodName, allName: allName, separatorStyle: separatorStyle, onSelected: { (key, index) in
             print("key is  \(String(describing: key)) , index is  \(index) ")
 
             if index == 0 {

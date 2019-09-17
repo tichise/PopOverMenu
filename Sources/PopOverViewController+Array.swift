@@ -4,7 +4,7 @@
 
 extension PopOverViewController {
 
-    open func setArrayForView<T: Comparable>(delegate:UIAdaptivePresentationControllerDelegate, view: UIView, titles: [String]?, keys: [T]?, defaultKey: T?, allName: String, onSelected: @escaping (_ key:T?, _ index: Int) -> ()) {
+    open func setArrayForView<T: Comparable>(delegate:UIAdaptivePresentationControllerDelegate, view: UIView, titles: [String]?, keys: [T]?, defaultKey: T?, allName: String, separatorStyle: UITableViewCell.SeparatorStyle, onSelected: @escaping (_ key:T?, _ index: Int) -> ()) {
 
         guard let titles = titles else {
             return
@@ -20,12 +20,12 @@ extension PopOverViewController {
         mutableTitles.insert(allName, at: 0)
         mutableKeys.insert(nil, at: 0)
 
-        setArrayForView(delegate: delegate, view: view, titles: mutableTitles, keys: mutableKeys, defaultKey: defaultKey) { (key, index) in
+        setArrayForView(delegate: delegate, view: view, titles: mutableTitles, keys: mutableKeys, defaultKey: defaultKey, separatorStyle: separatorStyle) { (key, index) in
             onSelected(key, index)
         }
     }
 
-    open func setArrayForView<T: Comparable>(delegate:UIAdaptivePresentationControllerDelegate, view: UIView, titles: [String]?, keys: [T?]?, defaultKey: T?, onSelected: @escaping (_ key: T?, _ index: Int) -> ()) {
+    open func setArrayForView<T: Comparable>(delegate:UIAdaptivePresentationControllerDelegate, view: UIView, titles: [String]?, keys: [T?]?, defaultKey: T?, separatorStyle: UITableViewCell.SeparatorStyle, onSelected: @escaping (_ key: T?, _ index: Int) -> ()) {
 
         guard let titles = titles else {
             return
@@ -36,7 +36,7 @@ extension PopOverViewController {
         }
 
         self.set(showsVerticalScrollIndicator: true)
-        self.set(separatorStyle: .singleLine)
+        self.set(separatorStyle: separatorStyle)
         self.set(titles: titles)
         self.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.any
 
@@ -49,7 +49,6 @@ extension PopOverViewController {
                 }
             }
         }
-
 
         self.popoverPresentationController?.sourceView = view
         self.popoverPresentationController?.sourceRect = view.frame
