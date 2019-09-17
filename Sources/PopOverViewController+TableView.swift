@@ -48,6 +48,11 @@ extension PopOverViewController {
             cell.accessoryType = selectRow == indexPath.row ? UITableViewCell.AccessoryType.checkmark : UITableViewCell.AccessoryType.none
         }
 
+        // Erase the last separator
+        if titles.count == indexPath.row + 1 {
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
+        }
+
         return cell
     }
     
