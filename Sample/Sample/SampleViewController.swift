@@ -8,13 +8,22 @@
 import UIKit
 import PopOverMenu
 
+enum Drink: String, CaseIterable {
+    case coffee
+    case water
+    case milk
+    case tea
+}
+
 class SampleViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
 
     let separatorStyle: UITableViewCell.SeparatorStyle = .singleLine
 
     var popOverViewController: PopOverViewController?
 
-    @IBOutlet weak var textLabel:UILabel?
+    @IBOutlet weak var textLabel: UILabel?
+    
+    var selectedDrink = Drink.water
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +49,43 @@ class SampleViewController: UIViewController, UIAdaptivePresentationControllerDe
         if let popOverViewController = self.popOverViewController {
             present(popOverViewController, animated: true, completion: nil)
         }
+    }
+    
+    @IBAction func openMenuAboutDrink(sender: UIButton) {
+        
+        self.popOverViewController = PopOverViewController.instantiate()
+        
+        guard let popOverViewController = popOverViewController else {
+            return
+        }
+        
+        popOverViewController.setEnumForView(delegate: self, view: sender, enumType: Drink.self, defaultEnum: selectedDrink, separatorStyle: .none) { (key, index) in
+            
+            guard let key = key else {
+                return
+            }
+            
+            self.selectedDrink = key
+            
+            switch (key) {
+            case .water:
+                self.textLabel?.text = "water"
+                break
+            case .coffee:
+                self.textLabel?.text = "coffee"
+                break
+            case .milk:
+                self.textLabel?.text = "milk"
+                break
+            case .tea:
+                 self.textLabel?.text = "tea"
+                 break
+            default:
+                break
+            }
+        }
+        
+        self.present(popOverViewController, animated: true) {() -> Void in }
     }
 
     // 画面回転時によばれる

@@ -13,7 +13,7 @@ class RootViewController: UITableViewController, UIAdaptivePresentationControlle
     var popOverViewController: PopOverViewController?
     var section1 = ["Int Array",  "String Array", "Int Array（All selectable）"]
     var section2 = ["Enum",  "Enum（All selectable）"]
-    var section3 = ["UIBarButtonItem"]
+    var section3 = ["UIBarButtonItem & UIButton"]
 
     var selectedIntKey: Int? = nil
     var selectedStringKey: String? = nil
