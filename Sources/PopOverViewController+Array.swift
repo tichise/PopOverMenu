@@ -51,7 +51,7 @@ extension PopOverViewController {
         }
 
         self.popoverPresentationController?.sourceView = view
-        self.popoverPresentationController?.sourceRect = view.frame
+        self.popoverPresentationController?.sourceRect = view.bounds
 
         let menuHeight = getMenuHeight(view: self.view, titles: titles)
         self.preferredContentSize = CGSize(width: 300, height: menuHeight)
