@@ -51,7 +51,7 @@ class SampleViewController: UIViewController, UIAdaptivePresentationControllerDe
         }
     }
     
-    @IBAction func openMenuAboutDrink(sender: UIButton) {
+    @IBAction func openDrinkMenu(sender: UIButton) {
         
         self.popOverViewController = PopOverViewController.instantiate()
         

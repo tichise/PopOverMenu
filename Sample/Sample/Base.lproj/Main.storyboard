@@ -105,7 +105,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="openMenuAboutDrinkWithSender:" destination="PJ2-zo-x0Z" eventType="touchDown" id="sbg-5A-TqD"/>
+                                    <action selector="openDrinkMenuWithSender:" destination="PJ2-zo-x0Z" eventType="touchDown" id="rCg-3Z-jFN"/>
                                 </connections>
                             </button>
                         </subviews>
