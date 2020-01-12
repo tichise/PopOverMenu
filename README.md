@@ -192,6 +192,57 @@ Two step
     }
 ```
 
+UIButton
+
+```
+enum Drink: String, CaseIterable {
+    case coffee
+    case water
+    case milk
+    case tea
+}
+```
+
+```
+@IBAction func openMenu(sender: UIButton) {
+        
+        self.popOverViewController = PopOverViewController.instantiate()
+        
+        guard let popOverViewController = popOverViewController else {
+            return
+        }
+        
+        popOverViewController.setEnumForView(delegate: self, view: sender, enumType: Drink.self, defaultEnum: selectedDrink, separatorStyle: .none) { (key, index) in
+            
+            guard let key = key else {
+                return
+            }
+            
+            self.selectedDrink = key
+            
+            switch (key) {
+            case .water:
+                self.textLabel?.text = "water"
+                break
+            case .coffee:
+                self.textLabel?.text = "coffee"
+                break
+            case .milk:
+                self.textLabel?.text = "milk"
+                break
+            case .tea:
+                 self.textLabel?.text = "tea"
+                 break
+            default:
+                break
+            }
+        }
+        
+        self.present(popOverViewController, animated: true) {() -> Void in }
+    }
+```
+
+
 #### ObjectiveC
 
 ```
