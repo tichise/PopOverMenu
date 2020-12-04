@@ -52,7 +52,8 @@ extension PopOverViewController {
         if titles.count == indexPath.row + 1 {
             cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
         }
-
+        cell.textLabel?.textAlignment = titleLabelTextAlignment
+        cell.detailTextLabel?.textAlignment = detailLabelTextAlignment
         return cell
     }
     

@@ -16,7 +16,8 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
 
     var storedSeparatorStyle: UITableViewCell.SeparatorStyle = UITableViewCell.SeparatorStyle.none
     var storedShowsVerticalScrollIndicator = false
-    
+    var titleLabelTextAlignment:NSTextAlignment = .natural
+    var detailLabelTextAlignment:NSTextAlignment = .natural
     @objc public static func instantiate() -> PopOverViewController {
         let storyboardsBundle = getStoryboardsBundle()
         let storyboard:UIStoryboard = UIStoryboard(name: "PopOver", bundle: storyboardsBundle)
@@ -74,7 +75,12 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
     @objc open func set(cellHeight: CGFloat) {
         self.cellHeight = cellHeight
     }
-    
+    @objc open func set(titleLabelTextAlignment:NSTextAlignment){
+        self.titleLabelTextAlignment = titleLabelTextAlignment
+    }
+    @objc open func set(detailLabelTextAlignment:NSTextAlignment){
+        self.detailLabelTextAlignment = detailLabelTextAlignment
+    }
     @objc open func set(selectRow: Int) {
         self.selectRow = selectRow
     }
