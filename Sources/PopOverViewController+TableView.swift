@@ -54,6 +54,9 @@ extension PopOverViewController {
         }
         cell.textLabel?.textAlignment = titleLabelTextAlignment
         cell.detailTextLabel?.textAlignment = detailLabelTextAlignment
+        if let titleAndDetailLabelHandler = self.titleAndDetailLabel{
+            titleAndDetailLabelHandler(indexPath.row,cell.textLabel,cell.detailTextLabel)
+        }
         return cell
     }
     

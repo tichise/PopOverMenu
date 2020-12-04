@@ -3,12 +3,12 @@
 //
 
 import Foundation
-
 open class PopOverViewController: UITableViewController, UIAdaptivePresentationControllerDelegate {
     
     var titles: [String] = []
     var descriptions: [String]?
     @objc open var completionHandler: ((_ selectRow: Int) -> Void)?
+    @objc open var titleAndDetailLabel: ((_ row:Int, _ titleLabel:UILabel?, _ detailLabel:UILabel?) -> Void)?
     var selectRow:Int?
     var titleLabelFont: UIFont = UIFont.systemFont(ofSize: 15)
     var detailLabelFont: UIFont = UIFont.systemFont(ofSize: 10)
@@ -100,7 +100,6 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
     @objc open func set(showsVerticalScrollIndicator: Bool) {
         self.storedShowsVerticalScrollIndicator = showsVerticalScrollIndicator
     }
-    
     static func getStoryboardsBundle() -> Bundle {
         let podBundle = Bundle(for: PopOverViewController.self)
         let bundleURL = podBundle.url(forResource: "PopOverMenuStoryboards", withExtension: "bundle")
