@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2F12422F3D5D49AADA9F45B4 /* Pods_SampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDF132C1A0E0C3BF00BDEAC /* Pods_SampleTests.framework */; };
+		3C972C6129534CD400743CAA /* PopOverMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 3C972C6029534CD400743CAA /* PopOverMenu */; };
 		791E2EFD223218D6008A653D /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791E2EFC223218D6008A653D /* RootViewController.swift */; };
 		798268FE1F1F269B0090613B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798268FD1F1F269B0090613B /* AppDelegate.swift */; };
 		798269001F1F269B0090613B /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798268FF1F1F269B0090613B /* SampleViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C972C5F29534C7E00743CAA /* PopOverMenu */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = PopOverMenu; path = ..; sourceTree = "<group>"; };
 		791E2EFC223218D6008A653D /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		798268FA1F1F269B0090613B /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		798268FD1F1F269B0090613B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C972C6129534CD400743CAA /* PopOverMenu in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +83,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C972C5E29534C7E00743CAA /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				3C972C5F29534C7E00743CAA /* PopOverMenu */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 		5F52D1841BC317DA714C9235 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +103,7 @@
 		798268F11F1F269B0090613B = {
 			isa = PBXGroup;
 			children = (
+				3C972C5E29534C7E00743CAA /* Packages */,
 				798268FC1F1F269B0090613B /* Sample */,
 				798269111F1F269B0090613B /* SampleTests */,
 				7982691C1F1F269C0090613B /* SampleUITests */,
@@ -158,6 +170,9 @@
 			dependencies = (
 			);
 			name = Sample;
+			packageProductDependencies = (
+				3C972C6029534CD400743CAA /* PopOverMenu */,
+			);
 			productName = Sample;
 			productReference = 798268FA1F1F269B0090613B /* Sample.app */;
 			productType = "com.apple.product-type.application";
@@ -445,7 +460,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -458,7 +474,10 @@
 				DEVELOPMENT_TEAM = T33NHY384Q;
 				INFOPLIST_FILE = Sample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = test.Sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -473,7 +492,10 @@
 				DEVELOPMENT_TEAM = T33NHY384Q;
 				INFOPLIST_FILE = Sample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = test.Sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -488,7 +510,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = T33NHY384Q;
 				INFOPLIST_FILE = SampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.paperboy.SampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -503,7 +529,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = T33NHY384Q;
 				INFOPLIST_FILE = SampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.paperboy.SampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -518,7 +548,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SampleUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.paperboy.SampleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -533,7 +567,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SampleUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.paperboy.SampleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -581,6 +619,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3C972C6029534CD400743CAA /* PopOverMenu */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PopOverMenu;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 798268F21F1F269B0090613B /* Project object */;
 }
