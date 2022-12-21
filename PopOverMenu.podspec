@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'PopOverMenu'
-  s.version = '2.7.0'
+  s.version = '3.0.0'
   s.license = 'MIT'
   s.swift_versions = '5.0'
   s.summary = 'PopOverMenu is a PopOver style menu.'
