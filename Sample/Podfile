@@ -1,9 +1,0 @@
-target 'Sample' do
-  use_frameworks!
-
-  pod 'PopOverMenu', :path => '../'
-
-  target 'SampleTests' do
-    inherit! :search_paths
-  end
-end
