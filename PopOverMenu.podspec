@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
 
   s.resource_bundles = {
     'PopOverMenuStoryboards' => [
-        'Storyboards/*.storyboard'
+        'Sources/Storyboards/*.storyboard'
     ]
   }
 end

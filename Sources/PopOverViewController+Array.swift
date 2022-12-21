@@ -2,6 +2,8 @@
 //  PopOverViewController+Array.swift
 //
 
+import UIKit
+
 extension PopOverViewController {
 
     public func setArrayForView<T: Comparable>(delegate:UIAdaptivePresentationControllerDelegate, view: UIView, titles: [String]?, keys: [T]?, defaultKey: T?, allName: String, separatorStyle: UITableViewCell.SeparatorStyle, onSelected: @escaping (_ key:T?, _ index: Int) -> ()) {
