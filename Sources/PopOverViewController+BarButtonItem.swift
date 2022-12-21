@@ -4,7 +4,7 @@
 
 extension PopOverViewController {
 
-    open func setArrayForBarButtonItem(delegate: UIAdaptivePresentationControllerDelegate, barButtonItem: UIBarButtonItem, titles: [String], descriptions: [String], separatorStyle: UITableViewCell.SeparatorStyle, onSelected: @escaping (_ index: Int) -> Void) {
+    public func setArrayForBarButtonItem(delegate: UIAdaptivePresentationControllerDelegate, barButtonItem: UIBarButtonItem, titles: [String], descriptions: [String], separatorStyle: UITableViewCell.SeparatorStyle, onSelected: @escaping (_ index: Int) -> Void) {
 
         let cellHeight: Int = 60
         let tableHeight: CGFloat = CGFloat(cellHeight * titles.count)
@@ -27,7 +27,7 @@ extension PopOverViewController {
         }
     }
 
-    open func setArrayForBarButtonItem(delegate: UIAdaptivePresentationControllerDelegate, barButtonItem: UIBarButtonItem, titles: [String], separatorStyle: UITableViewCell.SeparatorStyle, onSelected: @escaping (_ index: Int) -> Void) {
+    public func setArrayForBarButtonItem(delegate: UIAdaptivePresentationControllerDelegate, barButtonItem: UIBarButtonItem, titles: [String], separatorStyle: UITableViewCell.SeparatorStyle, onSelected: @escaping (_ index: Int) -> Void) {
 
         self.set(titles: titles)
         self.set(separatorStyle: separatorStyle)
