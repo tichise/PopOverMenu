@@ -1,0 +1,16 @@
+PODS:
+  - PopOverMenu (2.7.0)
+
+DEPENDENCIES:
+  - PopOverMenu (from `../`)
+
+EXTERNAL SOURCES:
+  PopOverMenu:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  PopOverMenu: b8c6a257c004fa3ea3cc576e157eb3670bf25cdb
+
+PODFILE CHECKSUM: 7503e22950c38cf2c4f9fea4f441589157040b21
+
+COCOAPODS: 1.11.3
