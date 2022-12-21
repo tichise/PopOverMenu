@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'PopOverMenu'
-  s.version = '2.6.0'
+  s.version = '2.7.0'
   s.license = 'MIT'
   s.summary = 'PopOverMenu is a PopOver style menu.'
   s.homepage = 'https://github.com/tichise/PopOverMenu'
@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.author = "Takuya Ichise"
   s.source = { :git => 'https://github.com/tichise/PopOverMenu.git', :tag => s.version }
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '14.0'
 
   s.source_files = 'Sources/*.swift'
   s.requires_arc = true
