@@ -97,7 +97,12 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
     
     static func getStoryboardsBundle() -> Bundle {
         let podBundle = Bundle(for: PopOverViewController.self)
+        
+#if SWIFT_PACKAGE
         let bundleURL = podBundle.url(forResource: "PopOverMenu_PopOverMenu", withExtension: "bundle")
+#else
+        let bundleURL = podBundle.url(forResource: "PopOverMenuStoryboards", withExtension: "bundle")
+#endif
         let bundle = Bundle(url: bundleURL!)!
         
         return bundle
