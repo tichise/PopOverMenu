@@ -1,5 +1,0 @@
-target 'SampleObjectiveC' do
-  use_frameworks!
-
-  pod 'PopOverMenu', :path => '../'
-end
