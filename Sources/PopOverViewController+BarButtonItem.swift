@@ -2,6 +2,8 @@
 //  PopOverViewController+BarButtonItem.swift
 //
 
+import UIKit
+
 extension PopOverViewController {
 
     public func setArrayForBarButtonItem(delegate: UIAdaptivePresentationControllerDelegate, barButtonItem: UIBarButtonItem, titles: [String], descriptions: [String], separatorStyle: UITableViewCell.SeparatorStyle, onSelected: @escaping (_ index: Int) -> Void) {

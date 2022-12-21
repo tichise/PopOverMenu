@@ -2,6 +2,8 @@
 //  PopOverViewController+Enum.swift
 //
 
+import UIKit
+
 extension PopOverViewController {
 
     public func setEnumForView<T: CaseIterable & RawRepresentable & Hashable>(delegate: UIAdaptivePresentationControllerDelegate, view: UIView, enumType: T.Type, defaultEnum: T?, allName: String, separatorStyle: UITableViewCell.SeparatorStyle, onSelected: @escaping (_ key: T?, _ index: Int) -> ()) {
