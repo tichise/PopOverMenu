@@ -3,12 +3,12 @@
 //
 
 import Foundation
-
 open class PopOverViewController: UITableViewController, UIAdaptivePresentationControllerDelegate {
     
     var titles: [String] = []
     var descriptions: [String]?
     @objc open var completionHandler: ((_ selectRow: Int) -> Void)?
+    @objc open var titleAndDetailLabel: ((_ row:Int, _ titleLabel:UILabel?, _ detailLabel:UILabel?) -> Void)?
     var selectRow:Int?
     var titleLabelFont: UIFont = UIFont.systemFont(ofSize: 15)
     var detailLabelFont: UIFont = UIFont.systemFont(ofSize: 10)
@@ -16,7 +16,8 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
 
     var storedSeparatorStyle: UITableViewCell.SeparatorStyle = UITableViewCell.SeparatorStyle.none
     var storedShowsVerticalScrollIndicator = false
-    
+    var titleLabelTextAlignment:NSTextAlignment = .natural
+    var detailLabelTextAlignment:NSTextAlignment = .natural
     @objc public static func instantiate() -> PopOverViewController {
         let storyboardsBundle = getStoryboardsBundle()
         let storyboard:UIStoryboard = UIStoryboard(name: "PopOver", bundle: storyboardsBundle)
@@ -74,7 +75,12 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
     @objc open func set(cellHeight: CGFloat) {
         self.cellHeight = cellHeight
     }
-    
+    @objc open func set(titleLabelTextAlignment:NSTextAlignment){
+        self.titleLabelTextAlignment = titleLabelTextAlignment
+    }
+    @objc open func set(detailLabelTextAlignment:NSTextAlignment){
+        self.detailLabelTextAlignment = detailLabelTextAlignment
+    }
     @objc open func set(selectRow: Int) {
         self.selectRow = selectRow
     }
@@ -94,7 +100,6 @@ open class PopOverViewController: UITableViewController, UIAdaptivePresentationC
     @objc open func set(showsVerticalScrollIndicator: Bool) {
         self.storedShowsVerticalScrollIndicator = showsVerticalScrollIndicator
     }
-    
     static func getStoryboardsBundle() -> Bundle {
         let podBundle = Bundle(for: PopOverViewController.self)
         let bundleURL = podBundle.url(forResource: "PopOverMenuStoryboards", withExtension: "bundle")
