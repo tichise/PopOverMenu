@@ -80,8 +80,6 @@ class SampleViewController: UIViewController, UIAdaptivePresentationControllerDe
             case .tea:
                  self.textLabel?.text = "tea"
                  break
-            default:
-                break
             }
         }
         
